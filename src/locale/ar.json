@@ -1,0 +1,64 @@
+{
+    "login_page":{
+        "title": "صفحة دخول المستخدم",
+        "userName": "اسم المستخدم",
+        "password": "كلمة المرور",
+        "rememberMe": "تذكرني",
+        "forgotPassword": "نسيت كلمة المرور؟",
+        "login": "تسجيل الدخول"
+    },
+    "side_bar":{
+        "home": "الرئيسة",
+        "overview": "نظرة عامة",
+        "crm": "إدارة علاقات العملاء",
+        "client_accounts": "حسابات العملاء",
+        "development_plans": "خطط التنمية",
+        "forecast": "التوقعات",
+        "weekly_plans": "الخطط الأسبوعية",
+        "visits": "الزيارات",
+        "price_quotation": "تسعيرة",
+        "purchase_order": "أوامر الشراء",
+        "delivery_notes": "ملاحظات التوصيل",
+        "sample_delivery": "عينة توصيل",
+        "custody_operation": "علميات الحجز",
+        "stock_operation": "عمليات المخزون",
+        "client_stock_level": "مستوى مخزون العميل",
+        "product_line": "خط الانتاج",
+        "product": "المنتجات",
+        "user_permission": "إدارة المستخدمين",
+        "target": "الأهداف",
+        "reports": "التقارير",
+        "po_report": "تقارير أوامر الشراء",
+        "development_plan_report": "تقارير خطط التنمية",
+        "visits_report": "تقارير الزيارات",
+        "forecast_report": "تقارير التوقعات",
+        "weekly_plan_report": "تقارير الخطط الأسبوعية",
+        "delivery_report": "تقارير التوصيل"
+    },
+    "overview":{
+        "target_goals": "المستهدفات العامة",
+        "yearly_target": "المستهدف السنوي",
+        "employee_target": "مستهدف الموظفين",
+        "expected_vs_actual_visits": "المتوقعة vs الزيارات الفعلية",
+        "expected_vs_actual_sales": "المتوقعة vs المبيعات الفعلية",
+        "po_summary": "ملخص أوامر الشراء",
+        "po_yearly": "أوامر الشراء السنوي",
+        "po_quartly": "أوامر الشراء الربعي"
+    },
+    "employee_target_chart":{
+        "actual": "المبيعات الفعلية",
+        "expected": "المبيعات المتوقعة"
+    },
+    "sales_chart":{
+        "expected":"المبيعات المتوقعة",
+        "actual":"المبيعات الفعلية"
+    },
+    "visits_chart":{
+        "expected":"الزيارات المتوقعة",
+        "actual":"الزيارات الفعلية"
+    },
+    "yearly_target_chart":{
+        "actual":"المبيعات الفعلية",
+        "expected":"المبيعات المتوقعة"
+    }
+}

@@ -1,0 +1,64 @@
+{
+    "login_page":{
+        "title": "User Login",
+        "userName": "User Name",
+        "password": "Password",
+        "rememberMe": "Remember Me",
+        "forgotPassword": "Forgot Password?",
+        "login": "Login"
+    },
+    "side_bar":{
+        "home": "Home",
+        "overview": "Overview",
+        "crm": "CRM",
+        "client_accounts": "Client Accounts",
+        "development_plans": "Development Plans",
+        "forecast": "Forecast",
+        "weekly_plans": "Weekly Plans",
+        "visits": "Visits",
+        "price_quotation": "Price Quotation",
+        "purchase_order": "Purchase Order",
+        "delivery_notes": "Delivery Notes",
+        "sample_delivery": "Sample Delivery",
+        "custody_operation": "Custody Operation",
+        "stock_operation": "Stock Operation",
+        "client_stock_level": "Client Stock Level",
+        "product_line": "Product Line",
+        "product": "Product",
+        "user_permission": "User Permission",
+        "target": "Target",
+        "reports": "Reports",
+        "po_report": "PO Report",
+        "development_plan_report": "Development Plan Report",
+        "visits_report": "Visits Report",
+        "forecast_report": "Forecast Report",
+        "weekly_plan_report": "Weekly Plan Report",
+        "delivery_report": "Delivery Report"
+    },
+    "overview":{
+        "target_goals": "Target Goals",
+        "yearly_target": "Yearly Target",
+        "employee_target": "Employee Target",
+        "expected_vs_actual_visits": "Expected vs Actual Visits",
+        "expected_vs_actual_sales": "Expected vs Actual Sales",
+        "po_summary": "Purchase Orders Summary",
+        "po_yearly": "PO Yearly",
+        "po_quartly": "PO Quartly"
+    },
+    "employee_target_chart":{
+        "actual": "Actual Sales",
+        "expected": "Expected Sales"
+    },
+    "sales_chart":{
+        "actual": "Actual Sales",
+        "expected": "Expected Sales"
+    },
+    "vists_chart":{
+        "actual": "Actual Visits",
+        "expected": "Expected Visits"
+    },
+    "yearly_target_chart":{
+        "actual": "Actual Sales",
+        "expected": "Expected Sales"
+    }
+}

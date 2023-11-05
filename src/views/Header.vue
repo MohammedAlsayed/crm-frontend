@@ -1,0 +1,61 @@
+<template>
+  <nav class="navbar navbar-expand-lg fixed-top navbar-light bg-light p-2">
+      <div class="container-fluid">
+        <!-- offcanvas trigger-->
+        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+      <!-- offcanvas trigger-->
+      <div class="d-flex flex-grow-1">
+        <span class="ms-2"></span>
+        <a class="navbar-brand ps-3" href="#"><img src="../assets/logo.svg" width="30" height="30" alt="logo"> Navbar</a>
+      </div>
+      <div class="collapse navbar-collapse show" id="collapsibleNavId">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="dropdownId" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle">
+            </a>
+            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownId">
+              <li><a class="dropdown-item" href="#">New project...</a></li>
+              <li><a class="dropdown-item" href="#">Settings</a></li>
+              <li><a class="dropdown-item" href="#">Profile</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" v-on:click="signout">Sign out</a></li>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</template>
+
+<script>
+export default{
+    name: 'Header',
+    mounted(){
+        let user = localStorage.getItem('user-info');
+        if (!user){
+            this.$router.push({name: 'Login'});
+        }
+    },
+    methods: {
+      signout(){
+        localStorage.removeItem('user-info');
+        this.$router.push({name: 'Login'});
+      }
+    }
+}
+</script>
+<style>
+
+@media (max-width: 992px){
+  #dropdownId{
+      width: 60px !important;
+      position: absolute !important;
+      right: 0 !important;
+      top: -46px !important;
+      padding-left: 10px !important;
+  }
+}
+</style>
