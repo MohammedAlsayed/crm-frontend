@@ -1,7 +1,9 @@
 import { colors } from './utils.js'
 import { transparentize } from './utils.js';
 import { months } from './utils.js';
+import i18n from '../components/i18n.ts';
 
+const { t } = i18n.global
 export const poYearly = {
     type: 'line',
     data: {
@@ -58,7 +60,7 @@ export const poYearly = {
           y: {
             title: {
               display: true,
-              text: 'Value'
+              text: t('general.SAR')
             }
           }
         }

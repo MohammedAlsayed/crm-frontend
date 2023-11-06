@@ -1,11 +1,14 @@
 <template>
+<div class="alert alert-success" role="alert">
+  This is a success alert—check it out!
+</div>
 <div class="container center">
     <div class="row">
         <div class="col-md-6 login">
             <h1>{{ $t('login_page.title') }}</h1>
             <div class="form-floating">
                 <div class="text-start p-1">
-                    <label v-html="$t('login_page.userName')" for="username"></label>
+                    <label for="username">{{ $t('login_page.userName') }}</label>
                     <input id="username-input" class="form-control form-control text-bg" v-model="username" size="32" type="text">
                 </div>
             </div>
@@ -111,9 +114,4 @@ export default{
 .login-btn:hover{
     background: hsla(160, 100%, 27%, 1) !important;
 }
-input[type=text]:focus, input[type=password]:focus{
-    box-shadow: 0 0 5px hsla(160, 100%, 37%, 1);
-    border: 1px solid hsla(160, 100%, 37%, 1);
-}
-
 </style>

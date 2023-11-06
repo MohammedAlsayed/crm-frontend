@@ -36,6 +36,14 @@ export const employeeTarget = {
           color: {
             enabled: true,
           },
+        },
+        scales: {
+          y: {
+            title: {
+              display: true,
+              text: t('general.SAR')
+            }
+          }
         }
       },
 }

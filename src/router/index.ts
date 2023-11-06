@@ -29,13 +29,6 @@ const router = createRouter({
           path: '/client_accounts',
           name: 'ClientAccounts',
           component: ClientAccounts,
-          children: [
-            {
-              path: '/new',
-              name: 'NewClientAccount',
-              component: NewClientAccount
-            }
-          ]
         },
         {
           path: '/development_plan',

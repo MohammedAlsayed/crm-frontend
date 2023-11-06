@@ -1,7 +1,7 @@
 <template>
     <Header></Header>
     <SideBar></SideBar>
-    <main class="mt-2 pt-2">
+    <main class="mt-2 pt-2 container-fluid">
         <router-view />
     </main>
     
@@ -26,12 +26,7 @@ export default{
 }
 </script>
 <style>
-/* .homeview{
-    position: relative;
-    top: 0;
-    left: 260px;
-    margin: 0;
-} */
+
 @media (min-width: 992px) {
     main{
         position: relative;

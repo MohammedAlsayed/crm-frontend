@@ -31,6 +31,14 @@ export const visits = {
           legend: {
             position: 'top',
           },
+        },
+        scales: {
+          y: {
+            title: {
+              display: true,
+              text: t('general.visit')
+            }
+          }
         }
       },
 }

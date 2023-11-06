@@ -1,4 +1,8 @@
 {
+    "general":{
+        "SAR":"ريال سعودي",
+        "visit":"زيارة"
+    },
     "login_page":{
         "title": "صفحة دخول المستخدم",
         "userName": "اسم المستخدم",
@@ -60,5 +64,18 @@
     "yearly_target_chart":{
         "actual":"المبيعات الفعلية",
         "expected":"المبيعات المتوقعة"
+    },
+    "client_accounts":{
+        "new_client_account": "إضافة عميل جديد",
+        "add_contacts":"إضافة جهات اتصال",
+        "search_in_client_accounts": "البحث في حسابات العملاء",
+        "general_info": "معلومات عامة",
+        "client_code": "رمز العميل",
+        "ar_client_name": "اسم العميل بالعربي",
+        "en_client_name": "اسم العميل بالإنجليزي",
+        "website": "الموقع الإلكتروني",
+        "phone": "رقم الهاتف",
+        "location": "الموقع",
+        "national_address": "العنوان الوطني"
     }
 }

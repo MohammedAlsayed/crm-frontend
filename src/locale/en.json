@@ -1,4 +1,11 @@
 {
+    "general":{
+        "SAR":"SAR",
+        "visit":"Visit"
+    },
+    "alert_sucess":{
+        "new_client": "New Client Account Added Successfully"
+    },
     "login_page":{
         "title": "User Login",
         "userName": "User Name",
@@ -53,12 +60,25 @@
         "actual": "Actual Sales",
         "expected": "Expected Sales"
     },
-    "vists_chart":{
+    "visits_chart":{
         "actual": "Actual Visits",
         "expected": "Expected Visits"
     },
     "yearly_target_chart":{
         "actual": "Actual Sales",
         "expected": "Expected Sales"
+    },
+    "client_accounts":{
+        "new_client_account": "New Client Account",
+        "add_contacts":"Add Contacts",
+        "search_in_client_accounts": "Search in Client Accounts",
+        "general_info": "General Info",
+        "client_code": "Client Code",
+        "ar_client_name": "Ar Client's Name",
+        "en_client_name": "En Client's Name",
+        "website": "Website",
+        "phone": "Phone",
+        "location": "Location",
+        "national_address": "National Address"
     }
 }

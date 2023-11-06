@@ -3,20 +3,20 @@
     <div class="offcanvas-header">
     </div>
     <div class="offcanvas-body p-0">
-      <nav class="mx-4 navbar">
+      <nav class="navbar">
         <ul class="navbar-nav list-unstyled ps-0">
         <li class="mb-1">
-          <button class="btn-toggle align-items-center rounded" data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="true">
+          <button class="btn-toggle align-items-center rounded sidebar-btn" data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="true">
             {{ $t('side_bar.home') }}
           </button>
           <div class="collapse show" id="home-collapse" style="">
             <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-              <li><router-link to="/overview" class="link-dark rounded px-3">{{ $t('side_bar.overview') }}</router-link></li>
+              <router-link to="/overview" class="link-dark rounded px-3">{{ $t('side_bar.overview') }}</router-link>
             </ul>
           </div>
       </li>
       <li class="mb-1">
-        <button class="btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#dashboard-collapse" aria-expanded="false">
+        <button class="btn-toggle align-items-center rounded collapsed sidebar-btn" data-bs-toggle="collapse" data-bs-target="#dashboard-collapse" aria-expanded="false">
           {{ $t('side_bar.crm') }}
         </button>
         <div class="collapse" id="dashboard-collapse">
@@ -41,7 +41,7 @@
         </div>
       </li>
       <li class="mb-1">
-        <button class="btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#orders-collapse" aria-expanded="false">
+        <button class="btn-toggle align-items-center rounded collapsed sidebar-btn" data-bs-toggle="collapse" data-bs-target="#orders-collapse" aria-expanded="false">
           {{ $t('side_bar.reports') }}
         </button>
         <div class="collapse" id="orders-collapse">
@@ -71,6 +71,17 @@
   width: var(--offcanvas-width) !important;
 }
 
+nav ul{
+  width: var(--offcanvas-width) !important;
+}
+
+.sidebar-btn{
+  margin-left: 0 !important;
+  margin-right: 0!important;
+  padding-left: -10px !important;
+  width: var(--offcanvas-width) !important;
+}
+
 @media (min-width: 992px){
   .sidebar-nav{
     transform: none !important;
@@ -90,10 +101,10 @@
   background-color: transparent;
   border: 0;
 }
-.btn-toggle:hover,
-.btn-toggle:focus {
+.btn-toggle:hover {
   color: rgba(0, 0, 0, .85);
   background-color: #d2f4ea;
+  transition: 0.2s ease-in-out;
 }
 
 .btn-toggle::before {
@@ -121,6 +132,13 @@
 .btn-toggle-nav a:hover,
 .btn-toggle-nav a:focus {
   background-color: #d2f4ea;
+  transition: 0.2s ease-in-out;
+  cursor: pointer;
+}
+.router-link-active{
+  background-color: #d2f4ea;
+  transition: 0.2s ease-in-out;
+  cursor: pointer;
 }
 
 </style>

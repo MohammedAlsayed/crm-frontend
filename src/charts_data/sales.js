@@ -1,5 +1,5 @@
-import i18n from '../components/i18n.ts';
 import { months } from './utils.js';
+import i18n from '../components/i18n.ts';
 
 const { t } = i18n.global
 export const sales = {
@@ -29,6 +29,14 @@ export const sales = {
           legend: {
             position: 'top',
           },
+        },
+        scales: {
+          y: {
+            title: {
+              display: true,
+              text: t('general.SAR')
+            }
+          }
         }
       },
 }

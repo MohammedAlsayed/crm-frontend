@@ -17,7 +17,7 @@ export default {
   position: absolute;
   left: calc(10%);
   right: calc(0%);
-  display: block;
+  display: flex;
   top: var(--topNavBarHeight);
 }
 @media (min-width: 992px){

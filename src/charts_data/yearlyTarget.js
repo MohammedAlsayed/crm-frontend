@@ -33,6 +33,14 @@ export const yearlyTarget = {
           color: {
             enabled: true,
           },
+        },
+        scales: {
+          y: {
+            title: {
+              display: true,
+              text: t('general.SAR')
+            }
+          }
         }
       },
 }

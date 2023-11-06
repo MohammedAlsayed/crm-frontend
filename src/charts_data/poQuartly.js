@@ -1,8 +1,9 @@
 import { colors } from './utils.js'
 import { transparentize } from './utils.js';
 import { quarters } from './utils.js';
+import i18n from '../components/i18n.ts';
 
-
+const { t } = i18n.global
 export const poQuartly = {
     type: 'bar',
     data: {
@@ -48,6 +49,14 @@ export const poQuartly = {
           legend: {
             position: 'top',
           },
+        },
+        scales: {
+          y: {
+            title: {
+              display: true,
+              text: t('general.SAR')
+            }
+          }
         }
       },
 }
