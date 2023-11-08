@@ -40,3 +40,20 @@ input[type]:focus{
 th{
   font-weight: bold;
 }
+
+.search-body{
+  overflow-x: auto;
+  overflow-y: auto;
+}
+
+.form-group > label{
+  display: flex;
+  width: 12%;
+}
+label{
+padding-left: 0 !important;
+padding-right: 0 !important;
+}
+label > div{
+  width: 30% !important;
+}

@@ -54,7 +54,7 @@ export const poQuartly = {
           y: {
             title: {
               display: true,
-              text: t('general.SAR')
+              text: t('SAR')
             }
           }
         }

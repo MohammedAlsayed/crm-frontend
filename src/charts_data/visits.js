@@ -10,14 +10,14 @@ export const visits = {
     labels: months,
     datasets: [
         {
-        label: t('visits_chart.expected'),
+        label: t('expected_visits'),
         data: [4000, 2000, 3000, 2000, 5000, 2200, 1100, 4400, 1205, 1000, 3000, 4000],
         borderColor: colors['green'],
         backgroundColor: transparentize('green', 0.5),
         borderWidth: 2,
         },
         {
-        label: t('visits_chart.actual'),
+        label: t('actual_visits'),
         data: [11000, 3300, 2200, 110, 3300, 550, 300, 1100, 1705, 1300, 400, 1000],
         borderColor: colors['blue'],
         backgroundColor: transparentize('blue', 0.5),
@@ -36,7 +36,7 @@ export const visits = {
           y: {
             title: {
               display: true,
-              text: t('general.visit')
+              text: t('visit')
             }
           }
         }

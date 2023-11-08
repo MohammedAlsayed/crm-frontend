@@ -1,74 +1,75 @@
 <template>
-  <div class="offcanvas offcanvas-start sidebar-nav" tabindex="-1" data-bs-backdrop="true" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
-    <div class="offcanvas-header">
-    </div>
+  <aside class="offcanvas offcanvas-start sidebar-nav" tabindex="-1" data-bs-backdrop="true" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
     <div class="offcanvas-body p-0">
-      <nav class="navbar">
+      <nav class="navbar ms-3">
         <ul class="navbar-nav list-unstyled ps-0">
         <li class="mb-1">
           <button class="btn-toggle align-items-center rounded sidebar-btn" data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="true">
-            {{ $t('side_bar.home') }}
+            {{ $t('home') }}
           </button>
           <div class="collapse show" id="home-collapse" style="">
             <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-              <router-link to="/overview" class="link-dark rounded px-3">{{ $t('side_bar.overview') }}</router-link>
+              <router-link to="/overview" class="link-dark rounded px-3">{{ $t('overview') }}</router-link>
             </ul>
           </div>
       </li>
       <li class="mb-1">
         <button class="btn-toggle align-items-center rounded collapsed sidebar-btn" data-bs-toggle="collapse" data-bs-target="#dashboard-collapse" aria-expanded="false">
-          {{ $t('side_bar.crm') }}
+          {{ $t('crm') }}
         </button>
         <div class="collapse" id="dashboard-collapse">
           <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-            <li><router-link to="/client_accounts" class="link-dark rounded px-3">{{ $t('side_bar.client_accounts') }}</router-link></li>
-            <li><router-link to="/development_plan" class="link-dark rounded px-3">{{ $t('side_bar.development_plans') }}</router-link></li>
-            <li><a href="#" class="link-dark rounded px-3">{{ $t('side_bar.forecast') }}</a></li>
-            <li><a href="#" class="link-dark rounded px-3">{{ $t('side_bar.weekly_plans') }}</a></li>
-            <li><a href="#" class="link-dark rounded px-3">{{ $t('side_bar.visits') }}</a></li>
-            <li><a href="#" class="link-dark rounded px-3">{{ $t('side_bar.price_quotation') }}</a></li>
-            <li><a href="#" class="link-dark rounded px-3">{{ $t('side_bar.purchase_order') }}</a></li>
-            <li><a href="#" class="link-dark rounded px-3">{{ $t('side_bar.delivery_notes') }}</a></li>
-            <li><a href="#" class="link-dark rounded px-3">{{ $t('side_bar.sample_delivery') }}</a></li>
-            <li><a href="#" class="link-dark rounded px-3">{{ $t('side_bar.custody_operation') }}</a></li>
-            <li><a href="#" class="link-dark rounded px-3">{{ $t('side_bar.stock_operation') }}</a></li>
-            <li><a href="#" class="link-dark rounded px-3">{{ $t('side_bar.client_stock_level') }}</a></li>
-            <li><a href="#" class="link-dark rounded px-3">{{ $t('side_bar.product_line') }}</a></li>
-            <li><a href="#" class="link-dark rounded px-3">{{ $t('side_bar.product') }}</a></li>
-            <li><a href="#" class="link-dark rounded px-3">{{ $t('side_bar.user_permission') }}</a></li>
-            <li><a href="#" class="link-dark rounded px-3">{{ $t('side_bar.target') }}</a></li>
+            <li><router-link to="/client_accounts" class="link-dark rounded px-3">{{ $t('client_accounts') }}</router-link></li>
+            <li><router-link to="/development_plan" class="link-dark rounded px-3">{{ $t('development_plans') }}</router-link></li>
+            <li><router-link to="/forecast" class="link-dark rounded px-3">{{ $t('forecast') }}</router-link></li>
+            <li><router-link to="/weekly_plans" class="link-dark rounded px-3">{{ $t('weekly_plans') }}</router-link></li>
+            <li><router-link to="/visits" class="link-dark rounded px-3">{{ $t('visits') }}</router-link></li>
+            <li><router-link to="/price_quotation" class="link-dark rounded px-3">{{ $t('price_quotation') }}</router-link></li>
+            <li><router-link to="/purchase_order" class="link-dark rounded px-3">{{ $t('purchase_order') }}</router-link></li>
+            <li><router-link to="/delivery_notes" class="link-dark rounded px-3">{{ $t('delivery_notes') }}</router-link></li>
+            <li><router-link to="/sample_delivery" class="link-dark rounded px-3">{{ $t('sample_delivery') }}</router-link></li>
+            <li><router-link to="/custody_operation" class="link-dark rounded px-3">{{ $t('custody_operation') }}</router-link></li>
+            <li><router-link to="/stock_operation" class="link-dark rounded px-3">{{ $t('stock_operation') }}</router-link></li>
+            <li><router-link to="/client_stock_level" class="link-dark rounded px-3">{{ $t('client_stock_level') }}</router-link></li>
+            <li><router-link to="/product_line" class="link-dark rounded px-3">{{ $t('product_line') }}</router-link></li>
+            <li><router-link to="/product" class="link-dark rounded px-3">{{ $t('product') }}</router-link></li>
+            <li><router-link to="/target" class="link-dark rounded px-3">{{ $t('target') }}</router-link></li>
+            <li><router-link to="/user_permission" class="link-dark rounded px-3">{{ $t('user_permission') }}</router-link></li>
           </ul>
         </div>
       </li>
       <li class="mb-1">
         <button class="btn-toggle align-items-center rounded collapsed sidebar-btn" data-bs-toggle="collapse" data-bs-target="#orders-collapse" aria-expanded="false">
-          {{ $t('side_bar.reports') }}
+          {{ $t('reports') }}
         </button>
         <div class="collapse" id="orders-collapse">
           <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-            <li><a href="#" class="link-dark rounded px-3">{{ $t('side_bar.po_report') }}</a></li>
-            <li><a href="#" class="link-dark rounded px-3">{{ $t('side_bar.development_plan_report') }}</a></li>
-            <li><a href="#" class="link-dark rounded px-3">{{ $t('side_bar.visits_report') }}</a></li>
-            <li><a href="#" class="link-dark rounded px-3">{{ $t('side_bar.forecast_report') }}</a></li>
-            <li><a href="#" class="link-dark rounded px-3">{{ $t('side_bar.weekly_plan_report') }}</a></li>
-            <li><a href="#" class="link-dark rounded px-3">{{ $t('side_bar.delivery_report') }}</a></li>
+            <li><a href="#" class="link-dark rounded px-3">{{ $t('po_report') }}</a></li>
+            <li><a href="#" class="link-dark rounded px-3">{{ $t('development_plan_report') }}</a></li>
+            <li><a href="#" class="link-dark rounded px-3">{{ $t('visits_report') }}</a></li>
+            <li><a href="#" class="link-dark rounded px-3">{{ $t('forecast_report') }}</a></li>
+            <li><a href="#" class="link-dark rounded px-3">{{ $t('weekly_plan_report') }}</a></li>
+            <li><a href="#" class="link-dark rounded px-3">{{ $t('delivery_report') }}</a></li>
           </ul>
         </div>
       </li>
       </ul>
       </nav>
     </div>
-  </div>
+  </aside>
 </template>
 
 <style>
 :root{
   --offcanvas-width: 230px;
-  --topNavBarHeight: 64px
+  --topNavBarHeight: 64px;
+  --sideBarBreakpoint: 992px;
 }
 
 .sidebar-nav{
   width: var(--offcanvas-width) !important;
+  top: var(--topNavBarHeight) !important;
+  height: calc(100% - var(--topNavBarHeight)) !important;
 }
 
 nav ul{
@@ -86,8 +87,6 @@ nav ul{
   .sidebar-nav{
     transform: none !important;
     visibility: visible !important;
-    top: var(--topNavBarHeight) !important;
-    height: calc(100% - var(--topNavBarHeight)) !important;
   }
 }
 .offcanvas-backdrop { background-color: transparent !important; }

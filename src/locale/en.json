@@ -1,20 +1,34 @@
 {
-    "general":{
         "SAR":"SAR",
-        "visit":"Visit"
-    },
-    "alert_sucess":{
-        "new_client": "New Client Account Added Successfully"
-    },
-    "login_page":{
+        "visit":"Visit",
+        "general_info": "General Info",
+        "calendar": "Calendar",
+        "client":"Client",
+        "department":"Department",
+        "doctor_name":"Doctor Name",
+        "sales_man":"Sales Man",
+        "notes":"Notes",
+        "date":"Date",
+        "product":"Product",
+        "quantity":"Quantity",
+        "price":"Price",
+        "amount":"Amount",
+        "close_date": "Close Date",
+        "close_percent": "Close Percent",
+
+        "success_login": "Welcome Back!",
+        "new_client": "New Client Account Added Successfully",
+    
+        "fail_login": "User Name or Password is incorrect",
+        "server_error": "Sorry, had an issue when connecting to the server",
+    
         "title": "User Login",
         "userName": "User Name",
         "password": "Password",
         "rememberMe": "Remember Me",
         "forgotPassword": "Forgot Password?",
-        "login": "Login"
-    },
-    "side_bar":{
+        "login": "Login",
+    
         "home": "Home",
         "overview": "Overview",
         "crm": "CRM",
@@ -31,7 +45,6 @@
         "stock_operation": "Stock Operation",
         "client_stock_level": "Client Stock Level",
         "product_line": "Product Line",
-        "product": "Product",
         "user_permission": "User Permission",
         "target": "Target",
         "reports": "Reports",
@@ -40,9 +53,8 @@
         "visits_report": "Visits Report",
         "forecast_report": "Forecast Report",
         "weekly_plan_report": "Weekly Plan Report",
-        "delivery_report": "Delivery Report"
-    },
-    "overview":{
+        "delivery_report": "Delivery Report",
+    
         "target_goals": "Target Goals",
         "yearly_target": "Yearly Target",
         "employee_target": "Employee Target",
@@ -50,35 +62,33 @@
         "expected_vs_actual_sales": "Expected vs Actual Sales",
         "po_summary": "Purchase Orders Summary",
         "po_yearly": "PO Yearly",
-        "po_quartly": "PO Quartly"
-    },
-    "employee_target_chart":{
-        "actual": "Actual Sales",
-        "expected": "Expected Sales"
-    },
-    "sales_chart":{
-        "actual": "Actual Sales",
-        "expected": "Expected Sales"
-    },
-    "visits_chart":{
-        "actual": "Actual Visits",
-        "expected": "Expected Visits"
-    },
-    "yearly_target_chart":{
-        "actual": "Actual Sales",
-        "expected": "Expected Sales"
-    },
-    "client_accounts":{
+        "po_quartly": "PO Quartly",
+    
+        "actual_sales": "Actual Sales",
+        "expected_sales": "Expected Sales",
+
+        "actual_visits": "Actual Visits",
+        "expected_visits": "Expected Visits",
+
+        "actual_target":"Actual Target",
+        "expected_target":"Expected Target",
+    
         "new_client_account": "New Client Account",
         "add_contacts":"Add Contacts",
         "search_in_client_accounts": "Search in Client Accounts",
-        "general_info": "General Info",
         "client_code": "Client Code",
         "ar_client_name": "Ar Client's Name",
         "en_client_name": "En Client's Name",
         "website": "Website",
         "phone": "Phone",
         "location": "Location",
-        "national_address": "National Address"
-    }
+        "national_address": "National Address",
+    
+        "new_dev_plan":"New Development Plan",
+        "search_dev_plan":"Search in Development Plans",
+        "dev_plan_action":"Dev Plan Action",
+        "dev_plan_status":"Dev Plan Status",
+    
+        "new_forecast":"New Forecast",
+        "search_forecast":"Search in Forecast"
 }

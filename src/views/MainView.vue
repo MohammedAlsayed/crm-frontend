@@ -1,15 +1,15 @@
 <template>
     <Header></Header>
     <SideBar></SideBar>
-    <main class="mt-2 pt-2 container-fluid">
+    <main>
         <router-view />
     </main>
     
 </template>
 
 <script>
-import Header from '../views/Header.vue';
-import SideBar from '../views/SideBar.vue';
+import Header from './Header.vue';
+import SideBar from './SideBar.vue';
 
 export default{
     components:{
@@ -26,10 +26,15 @@ export default{
 }
 </script>
 <style>
-
-@media (min-width: 992px) {
+main{
+    position: absolute;
+    width: 80vw !important;
+    top: 80px !important;
+    
+}
+@media (min-width: 992px){
     main{
-        position: relative;
+        left: calc(var(--offcanvas-width) + 20px) !important;
     }
 }
 </style>

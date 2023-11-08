@@ -10,13 +10,13 @@
                         type="button" 
                         role="tab"
                          aria-controls="new client" 
-                         aria-selected="true">{{ $t('client_accounts.new_client_account') }}</button>
+                         aria-selected="true">{{ $t('new_client_account') }}</button>
                     </li>
                     <li class="nav-item" role="presentation">
-                        <button class="nav-link" data-bs-toggle="tab" data-bs-target="#add-contacts" type="button" role="tab" aria-controls="add contacts" aria-selected="false">{{ $t('client_accounts.add_contacts') }}</button>
+                        <button class="nav-link" data-bs-toggle="tab" data-bs-target="#add-contacts" type="button" role="tab" aria-controls="add contacts" aria-selected="false">{{ $t('add_contacts') }}</button>
                     </li>
                     <li class="nav-item" role="presentation">
-                        <button class="nav-link" data-bs-toggle="tab" data-bs-target="#search-client" type="button" role="tab" aria-controls="search client" aria-selected="false">{{ $t('client_accounts.search_in_client_accounts') }}</button>
+                        <button class="nav-link" data-bs-toggle="tab" data-bs-target="#search-client" type="button" role="tab" aria-controls="search client" aria-selected="false">{{ $t('search_in_client_accounts') }}</button>
                     </li>
                 </ul>
                 <div class="tab-content">
@@ -30,9 +30,9 @@
 </template>
 
 <script lang="ts">
-import NewClientAccount from './client_accounts/NewClientAccount.vue'
-import SearchClient from './client_accounts/SearchClient.vue'
-import AddContacts from './client_accounts/AddContacts.vue'
+import NewClientAccount from '../client_accounts/NewClientAccount.vue'
+import SearchClient from '../client_accounts/SearchClient.vue'
+import AddContacts from '../client_accounts/AddContacts.vue'
 
 export default{
     components:{
@@ -42,3 +42,6 @@ export default{
 },
 }
 </script>
+<style>
+
+</style>

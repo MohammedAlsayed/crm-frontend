@@ -2,12 +2,12 @@
     <div class="container-fluid">
         <div class="row">
             <div class="d-flex justify-content-center col-md-12 fw-bold fs-3 pb-4">
-                {{ $t('overview.target_goals') }}
+                {{ $t('target_goals') }}
             </div>
             <div class="col-lg-6">
                 <div class="card mt-0">
                     <div class="card-header text-center">
-                        <span>{{ $t('overview.yearly_target') }}</span>
+                        <span>{{ $t('yearly_target') }}</span>
                     </div>
                     <div class="card-body">
                         <canvas id="yearlyTarget"></canvas>
@@ -17,7 +17,7 @@
             <div class="col-lg-6">
                 <div class="card mt-0">
                     <div class="card-header text-center">
-                        <span>{{ $t('overview.employee_target') }}</span>
+                        <span>{{ $t('employee_target') }}</span>
                     </div>
                     <div class="card-body">
                         <canvas id="employeeTarget"></canvas>
@@ -29,7 +29,7 @@
             <div class="col-lg-6">
                 <div class="card mt-0">
                     <div class="card-header text-center">
-                        <span>{{ $t('overview.expected_vs_actual_visits') }}</span>
+                        <span>{{ $t('expected_vs_actual_visits') }}</span>
                     </div>
                     <div class="card-body">
                         <canvas id="visits"></canvas>
@@ -39,7 +39,7 @@
             <div class="col-lg-6">
                 <div class="card mt-0">
                     <div class="card-header text-center">
-                        <span>{{ $t('overview.expected_vs_actual_sales') }}</span>
+                        <span>{{ $t('expected_vs_actual_sales') }}</span>
                     </div>
                     <div class="card-body">
                         <canvas id="sales"></canvas>
@@ -50,12 +50,12 @@
 
         <div class="row pt-4 pb-4">
             <div class="d-flex justify-content-center col-md-12 fw-bold fs-3 pb-4">
-                {{ $t('overview.po_summary') }}
+                {{ $t('po_summary') }}
             </div>
             <div class="col-lg-6">
                 <div class="card mt-0">
                     <div class="card-header text-center">
-                        <span>{{ $t('overview.po_yearly') }}</span>
+                        <span>{{ $t('po_yearly') }}</span>
                     </div>
                     <div class="card-body">
                         <canvas id="poYearly"></canvas>
@@ -65,7 +65,7 @@
             <div class="col-lg-6">
                 <div class="card mt-0">
                     <div class="card-header text-center">
-                        <span>{{ $t('overview.po_quartly') }}</span>
+                        <span>{{ $t('po_quartly') }}</span>
                     </div>
                     <div class="card-body">
                         <canvas id="poQuartly"></canvas>

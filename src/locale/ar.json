@@ -1,22 +1,33 @@
 {
-    "general":{
         "SAR":"ريال سعودي",
-        "visit":"زيارة"
-    },
-    "login_page":{
-        "title": "صفحة دخول المستخدم",
+        "visit":"زيارة",
+        "general_info": "معلومات عامة",
+        "calendar": "التقويم",
+        "client":"العميل",
+        "department":"القسم",
+        "doctor_name":"اسم الدكتور",
+        "sales_man":"المندوب",
+        "notes":"ملاحظات",
+        "date":"التاريخ",
+        "product":"المنتج",
+        "quantity":"الكمية",
+        "price":"السعر",
+        "amount":"المبلغ",
+        "close_date": "تاريخ الإتمام",
+        "close_percent": "نسبة الإتمام",
+    
+        "login_title": "صفحة دخول المستخدم",
         "userName": "اسم المستخدم",
         "password": "كلمة المرور",
         "rememberMe": "تذكرني",
         "forgotPassword": "نسيت كلمة المرور؟",
-        "login": "تسجيل الدخول"
-    },
-    "side_bar":{
+        "login": "تسجيل الدخول",
+    
         "home": "الرئيسة",
         "overview": "نظرة عامة",
         "crm": "إدارة علاقات العملاء",
         "client_accounts": "حسابات العملاء",
-        "development_plans": "خطط التنمية",
+        "development_plans": "خطط التطوير",
         "forecast": "التوقعات",
         "weekly_plans": "الخطط الأسبوعية",
         "visits": "الزيارات",
@@ -28,18 +39,16 @@
         "stock_operation": "عمليات المخزون",
         "client_stock_level": "مستوى مخزون العميل",
         "product_line": "خط الانتاج",
-        "product": "المنتجات",
         "user_permission": "إدارة المستخدمين",
         "target": "الأهداف",
         "reports": "التقارير",
         "po_report": "تقارير أوامر الشراء",
-        "development_plan_report": "تقارير خطط التنمية",
+        "development_plan_report": "تقارير خطط التطوير",
         "visits_report": "تقارير الزيارات",
         "forecast_report": "تقارير التوقعات",
         "weekly_plan_report": "تقارير الخطط الأسبوعية",
-        "delivery_report": "تقارير التوصيل"
-    },
-    "overview":{
+        "delivery_report": "تقارير التوصيل",
+    
         "target_goals": "المستهدفات العامة",
         "yearly_target": "المستهدف السنوي",
         "employee_target": "مستهدف الموظفين",
@@ -47,35 +56,30 @@
         "expected_vs_actual_sales": "المتوقعة vs المبيعات الفعلية",
         "po_summary": "ملخص أوامر الشراء",
         "po_yearly": "أوامر الشراء السنوي",
-        "po_quartly": "أوامر الشراء الربعي"
-    },
-    "employee_target_chart":{
-        "actual": "المبيعات الفعلية",
-        "expected": "المبيعات المتوقعة"
-    },
-    "sales_chart":{
-        "expected":"المبيعات المتوقعة",
-        "actual":"المبيعات الفعلية"
-    },
-    "visits_chart":{
-        "expected":"الزيارات المتوقعة",
-        "actual":"الزيارات الفعلية"
-    },
-    "yearly_target_chart":{
-        "actual":"المبيعات الفعلية",
-        "expected":"المبيعات المتوقعة"
-    },
-    "client_accounts":{
+        "po_quartly": "أوامر الشراء الربعي",
+
+        "actual_sales": "المبيعات الفعلية",
+        "expected_sales": "المبيعات المتوقعة",
+    
+        "actual_visits":"الزيارات الفعلية",
+        "expected_visits":"الزيارات المتوقعة",
+
+        "actual_target":"الهدف الفعلي",
+        "expected_target":"الهدف المتوقع",
+    
         "new_client_account": "إضافة عميل جديد",
         "add_contacts":"إضافة جهات اتصال",
         "search_in_client_accounts": "البحث في حسابات العملاء",
-        "general_info": "معلومات عامة",
         "client_code": "رمز العميل",
         "ar_client_name": "اسم العميل بالعربي",
         "en_client_name": "اسم العميل بالإنجليزي",
         "website": "الموقع الإلكتروني",
         "phone": "رقم الهاتف",
         "location": "الموقع",
-        "national_address": "العنوان الوطني"
-    }
+        "national_address": "العنوان الوطني",
+    
+        "new_dev_plan":"خطة تطوير جديدة",
+        "search_dev_plan":"البحث في خطط التطوير",
+        "dev_plan_action":"خطة تطوير العمل",
+        "dev_plan_status":"حالة خطة التطوير"
 }

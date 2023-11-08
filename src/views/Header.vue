@@ -1,5 +1,5 @@
 <template>
-  <nav class="navbar navbar-expand-lg fixed-top navbar-light bg-light p-2">
+  <nav class="navbar navbar-expand-lg fixed-top navbar-light bg-light p-2" style="z-index: 99;">
       <div class="container-fluid">
         <!-- offcanvas trigger-->
         <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
@@ -8,7 +8,7 @@
       <!-- offcanvas trigger-->
       <div class="d-flex flex-grow-1">
         <span class="ms-2"></span>
-        <a class="navbar-brand ps-3" href="#"><img src="../assets/logo.svg" width="30" height="30" alt="logo"> Navbar</a>
+        <a class="navbar-brand ps-3" href="/"><img src="../assets/logo1.svg" width="40" height="40" alt="logo"> Modern Quality Est.</a>
       </div>
       <div class="collapse navbar-collapse show" id="collapsibleNavId">
         <ul class="navbar-nav ms-auto">

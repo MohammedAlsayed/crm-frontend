@@ -60,7 +60,7 @@ export const poYearly = {
           y: {
             title: {
               display: true,
-              text: t('general.SAR')
+              text: t('SAR')
             }
           }
         }

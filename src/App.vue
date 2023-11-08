@@ -14,15 +14,6 @@ export default {
 </script>
 <style>
 #app{
-  position: absolute;
-  left: calc(10%);
-  right: calc(0%);
-  display: flex;
-  top: var(--topNavBarHeight);
-}
-@media (min-width: 992px){
-  #app{
-    left: var(--offcanvas-width);
-  }
+  display: block;
 }
 </style>
