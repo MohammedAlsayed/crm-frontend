@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This repo is a setup for the frontend development of the CRM web-application. It's build with Vue 3.
+This repo is a setup for the frontend development of the CRM web-application. It's build with Vue 3 and Bootstrap 5.
 
 ## Recommended IDE Setup
 

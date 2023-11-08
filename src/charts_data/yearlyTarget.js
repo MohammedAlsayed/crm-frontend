@@ -38,7 +38,7 @@ export const yearlyTarget = {
           y: {
             title: {
               display: true,
-              text: t('general.SAR')
+              text: t('SAR')
             }
           }
         }

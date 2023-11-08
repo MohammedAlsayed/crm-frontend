@@ -3,7 +3,7 @@
         <div class="row mt-4">
             <div class="card">
                 <div class="card-body search-body">
-                    <DataTable id="search-forecast" class="table table-hover client-search-width">
+                    <DataTable class="table table-hover client-search-width">
                         <thead class="table-success">
                             <tr>
                                 <th scope="col">#</th>

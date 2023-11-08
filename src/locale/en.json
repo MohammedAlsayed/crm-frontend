@@ -90,5 +90,8 @@
         "dev_plan_status":"Dev Plan Status",
     
         "new_forecast":"New Forecast",
-        "search_forecast":"Search in Forecast"
+        "search_forecast":"Search in Forecast",
+
+        "new_weekly_plan":"New Weekly Plan",
+        "search_weekly_plan":"Search in Weekly Plan"
 }

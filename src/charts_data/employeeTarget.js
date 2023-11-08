@@ -41,7 +41,7 @@ export const employeeTarget = {
           y: {
             title: {
               display: true,
-              text: t('general.SAR')
+              text: t('SAR')
             }
           }
         }
