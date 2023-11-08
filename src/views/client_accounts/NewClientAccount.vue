@@ -85,6 +85,7 @@ export default{
         ar_client_name(newVal, oldVal) {
             if (!this.isArabicChars(newVal) && newVal !== oldVal) {
                 this.ar_client_name = "" //reset the field if the char is not arabic
+                this.$refs.alert.showAlert("warning", "Only Arabic text is allowed");
             }
         }
   },

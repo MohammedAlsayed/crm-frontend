@@ -10,45 +10,27 @@
                     <div class="card-body">
                         <form @submit.prevent="save" class="ms-4 me-4">
                             <div class="form-group row mb-4">
-                                <label for="" class="col-form-label required">{{ $t('date') }}</label>
+                                <label for="" class="col-form-label required">{{ $t('planned_date') }}</label>
                                 <div class="col-lg-4 me-5">
-                                    <input type="month" class="form-control" placeholder="dd/mm/yy">
-                                </div>
-                                <label for="" class="col-form-label required">{{ $t('close_date') }}</label>
-                                <div class="col-lg-4">
                                     <input type="date" class="form-control" placeholder="dd/mm/yy">
                                 </div>
-                            </div>
-                            <div class="form-group row mb-4">
-                                <label for="" class="col-form-label required">{{ $t('price') }}</label>
-                                <div class="col-lg-4 me-5">
-                                    <input type="number" class="form-control" min="0">
-                                </div>
-                                <label for="" class="col-form-label required">{{ $t('quantity') }}</label>
+                                <label for="" class="col-form-label required">{{ $t('sales_man') }}</label>
                                 <div class="col-lg-4">
-                                    <input type="number" class="form-control" min="0">
+                                    <input type="text" class="form-control" disabled placeholder="0014: Hassan">
                                 </div>
                             </div>
                             <div class="form-group row mb-4">
-                                <label for="" class="col-form-label required">{{ $t('product') }}</label>
+                                <label for="" class="col-form-label required">{{ $t('account1') }}</label>
                                 <div class="col-lg-4 me-5">
-                                    <div class="input-group">
-                                        <select class="form-select" id="product-input">
-                                            <option selected>Choose...</option>
-                                            <option value="1">One</option>
-                                            <option value="2">Two</option>
-                                            <option value="3">Three</option>
-                                        </select>
-                                    </div>
+                                    <input type="text" class="form-control">
                                 </div>
-                                <label for="" class="col-form-label required">{{ $t('amount') }}</label>
+                                <label for="" class="col-form-label">{{ $t('account2') }}</label>
                                 <div class="col-lg-4">
-                                    <input type="number" class="form-control" min="0" disabled>
+                                    <input type="text" class="form-control">
                                 </div>
                             </div>
-
                             <div class="form-group row mb-4">
-                                <label for="" class="col-form-label required">{{ $t('client') }}</label>
+                                <label for="" class="col-form-label">{{ $t('account3') }}</label>
                                 <div class="col-lg-4 me-5">
                                     <div class="input-group">
                                         <select class="form-select" id="product-input">
@@ -58,35 +40,6 @@
                                             <option value="3">Three</option>
                                         </select>
                                     </div>
-                                </div>
-                                <label for="" class="col-form-label required">{{ $t('department') }}</label>
-                                <div class="col-lg-4">
-                                    <div class="input-group">
-                                        <select class="form-select" id="product-input">
-                                            <option selected>Choose...</option>
-                                            <option value="1">One</option>
-                                            <option value="2">Two</option>
-                                            <option value="3">Three</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="form-group row mb-4">
-                                <label for="" class="col-form-label required">{{ $t('doctor_name') }}</label>
-                                <div class="col-lg-4 me-5">
-                                    <div class="input-group">
-                                        <select class="form-select" id="product-input">
-                                            <option selected>Choose...</option>
-                                            <option value="1">One</option>
-                                            <option value="2">Two</option>
-                                            <option value="3">Three</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <label for="" class="col-form-label required">{{ $t('close_percent') }}</label>
-                                <div class="col-lg-4">
-                                    <input type="number" class="form-control" min="0" max="100">
                                 </div>
                             </div>
 

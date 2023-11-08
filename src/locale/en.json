@@ -93,5 +93,9 @@
         "search_forecast":"Search in Forecast",
 
         "new_weekly_plan":"New Weekly Plan",
-        "search_weekly_plan":"Search in Weekly Plan"
+        "search_weekly_plan":"Search in Weekly Plan",
+        "planned_date":"Planned Date",
+        "account1": "Account1",
+        "account2": "Account2",
+        "account3": "Account3"
 }

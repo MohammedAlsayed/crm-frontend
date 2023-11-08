@@ -1,5 +1,5 @@
 <template>
-    <div class="container-fluid">
+    <div class="container">
         <div class="row">
             <div class="col-lg-12">
                 <ul class="nav nav-tabs" role="tablist">
@@ -18,7 +18,7 @@
                 </ul>
                 <div class="tab-content">
                     <NewDevPlan/>
-                    <SearchDevPlan/>
+                    <SearchComponent idTarget="search-dev-plan" :columns="columnNames" :tableData="tableData" />
                 </div>
             </div>
         </div>
@@ -27,9 +27,31 @@
 
 <script lang="ts">
 import NewDevPlan from '../development_plan/NewDevPlan.vue';
-import SearchDevPlan from '../development_plan/SearchDevPlan.vue'
+import SearchComponent from '@/components/SearchComponent.vue';
 
 export default{
-    components: { NewDevPlan, SearchDevPlan, }
+    components: { 
+        NewDevPlan, SearchComponent 
+    },
+    data(){
+        return {
+            columnNames: ['date','dev_plan_action','dev_plan_status',
+            'client','department','doctor_name','sales_man','notes'],
+            tableData:[
+                ["10/2022","الاسم بالعربي","Ted Alhayat",
+                "www.ted.com","0555555555","google maps",
+                "1515 takahssusi road, Ar Riyadh",
+                "1515 takahssusi road, Ar Riyadh"],
+                ["10/2022","الاسم بالعربي","Ted Alhayat",
+                "www.ted.com","0555555555","google maps",
+                "1515 takahssusi road, Ar Riyadh",
+                "1515 takahssusi road, Ar Riyadh"],
+                ["10/2022","الاسم بالعربي","Ted Alhayat",
+                "www.ted.com","0555555555","google maps",
+                "1515 takahssusi road, Ar Riyadh",
+                "1515 takahssusi road, Ar Riyadh"],
+            ]
+        }
+    }
 }
 </script>

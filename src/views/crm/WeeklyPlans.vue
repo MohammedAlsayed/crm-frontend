@@ -1,5 +1,5 @@
 <template>
-    <div class="container-fluid">
+    <div class="container">
         <div class="row">
             <div class="col-lg-12">
                 <ul class="nav nav-tabs" role="tablist">
@@ -44,15 +44,16 @@ export default{
                 'close_percent', 'notes'],
 
             tableData:[
-                {'date':'11/2022', 'close_date':'30/11/2022', 'price':'30', 
-                'quantity':'10',  'product':'glass', 'amount':'10', 
-                'client':'KFSHRC','department':'Family','doctor_name':'Mosa',
-                'close_percent':'100%', 'notes':'They need more next month'},
-                {'date':'11/2022', 'close_date':'30/11/2022', 'price':'30',
-                'quantity':'10',  'product':'glass', 'amount':'10',
-                'client':'KFSHRC','department':'Family','doctor_name':'Mosa',
-                'close_percent':'100%', 'notes':'They need more next month'}
-            ]
+                ['11/2022','30/11/2022', '30', 
+                '10', 'glass', '10', 
+                'KFSHRC','Family','Mosa',
+                '100%', 'They need more next month'],
+                ['11/2022', '30/11/2022', '30',
+                '10',  'glass', '10',
+                'KFSHRC','Family','Mosa',
+                '100%', 'They need more next month'
+                ]
+        ]
         }
     }
 }

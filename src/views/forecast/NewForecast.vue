@@ -112,6 +112,15 @@
 
 <script lang="ts">
 import AlertComponent from '@/components/AlertComponent.vue'
+
+export default{
+    components: { AlertComponent },
+    methods: {
+        save(){
+            this.$refs.alert.showAlert('success', 'Saved Successfully')
+        }
+    }
+}
 </script>
 
 <style>

@@ -16,7 +16,7 @@
                                 </div>
                                 <label class="col-form-label required" for="product-input">{{ $t('product') }}</label>
                                 <div class="col-lg-4">
-                                    <div class="input-group mb-3">
+                                    <div class="input-group">
                                         <select class="form-select" id="product-input">
                                             <option selected>Choose...</option>
                                             <option value="1">One</option>
@@ -29,7 +29,7 @@
 
                             <div class="form-group row mb-4">
                                 <label for="product-dev-plan" class="col-form-label required">{{ $t('dev_plan_action') }}</label>
-                                <div class="col-lg-4 mb-4 me-5">
+                                <div class="col-lg-4 me-5">
                                     <div class="input-group">
                                         <select class="form-select" id="product-dev-plan">
                                             <option selected>Choose...</option>
@@ -41,7 +41,7 @@
                                 </div>
 
                                 <label class="col-form-label required" for="product-dev-status">{{ $t('dev_plan_status') }}</label>
-                                <div class="col-lg-4 mb-4">
+                                <div class="col-lg-4">
                                     <div class="input-group">
                                         <select class="form-select" id="product-dev-status">
                                             <option selected>Choose...</option>
@@ -55,7 +55,7 @@
 
                             <div class="form-group row mb-4">
                                 <label for="client" class="col-form-label required">{{ $t('client') }}</label>
-                                <div class="col-lg-4 mb-4 me-5">
+                                <div class="col-lg-4 me-5">
                                     <div class="input-group">
                                         <select class="form-select" id="client">
                                             <option selected>Choose...</option>
@@ -67,7 +67,7 @@
                                 </div>
 
                                 <label class="col-form-label required" for="department">{{ $t('department') }}</label>
-                                <div class="col-lg-4 mb-4">
+                                <div class="col-lg-4">
                                     <div class="input-group">
                                         <select class="form-select" id="department">
                                             <option selected>Choose...</option>
@@ -81,7 +81,7 @@
 
                             <div class="form-group row mb-4">
                                 <label for="doctor-name" class="col-form-label required">{{ $t('doctor_name') }}</label>
-                                <div class="col-lg-4 mb-4 me-5">
+                                <div class="col-lg-4 me-5">
                                     <div class="input-group">
                                         <select class="form-select" id="doctor-name">
                                             <option selected>Choose...</option>
@@ -93,14 +93,14 @@
                                 </div>
 
                                 <label class="col-form-label" for="product-input">{{ $t('sales_man') }}</label>
-                                <div class="col-lg-4 mb-4">
+                                <div class="col-lg-4">
                                     <input type="text" class="form-control" id="client-code" placeholder="0016: Hassan Raza" disabled>
                                 </div>
                             </div>
 
                             <div class="form-group row mb-4">
                                 <label class="col-form-label" for="dev-plan-notes">{{ $t('notes') }}</label>
-                                <div class="col-lg-9 mb-4">
+                                <div class="col-lg-9">
                                     <textarea class="form-control" id="dev-plan-notes" rows="3"></textarea>
                                 </div>
                             </div>
@@ -120,4 +120,13 @@
 
 <script lang="ts">
 import AlertComponent from '@/components/AlertComponent.vue'
+
+export default{
+    components: { AlertComponent },
+    methods:{
+        save(){
+            this.$refs.alert.showAlert('success', 'Created New Development Plan Successfully');
+        }
+    }
+}
 </script>

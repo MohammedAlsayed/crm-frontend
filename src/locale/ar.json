@@ -81,5 +81,15 @@
         "new_dev_plan":"خطة تطوير جديدة",
         "search_dev_plan":"البحث في خطط التطوير",
         "dev_plan_action":"خطة تطوير العمل",
-        "dev_plan_status":"حالة خطة التطوير"
+        "dev_plan_status":"حالة خطة التطوير",
+
+        "new_forecast":"تنبؤ جديد",
+        "search_forecast":"البحث في التنبؤات",
+
+        "new_weekly_plan":"خطة أسبوعية جديدة",
+        "search_weekly_plan":"البحث في الخطط الأسبوعية",
+        "planned_date":"التاريخ المحدد",
+        "account1": "حساب ١",
+        "account2": "حساب ٢",
+        "account3": "حساب ٣"
 }

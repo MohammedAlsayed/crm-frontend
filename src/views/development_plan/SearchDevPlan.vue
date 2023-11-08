@@ -7,27 +7,27 @@
                         <thead class="table-success">
                             <tr>
                                 <th scope="col">#</th>
-                                <th scope="col">{{ $t('date') }}</th>
-                                <th scope="col">{{ $t('dev_plan_action') }}</th>
-                                <th scope="col">{{ $t('dev_plan_status') }}</th>
-                                <th scope="col">{{ $t('client') }}</th>
-                                <th scope="col">{{ $t('department') }}</th>
-                                <th scope="col">{{ $t('doctor_name') }}</th>
-                                <th scope="col">{{$t('sales_man') }}</th>
-                                <th scope="col">{{$t('notes') }}</th>
+                                <th scope="col">{{ $t() }}</th>
+                                <th scope="col">{{ $t() }}</th>
+                                <th scope="col">{{ $t() }}</th>
+                                <th scope="col">{{ $t() }}</th>
+                                <th scope="col">{{ $t() }}</th>
+                                <th scope="col">{{ $t() }}</th>
+                                <th scope="col">{{$t() }}</th>
+                                <th scope="col">{{$t() }}</th>
                             </tr>
                         </thead>
                         <tbody class="table-group-divider">
                             <tr>
                                 <th scope="row">1</th>
-                                <td>10/2022</td>
-                                <td>..</td>
-                                <td>Ted Alhayat</td>
-                                <td>www.ted.com</td>
-                                <td>0555555555</td>
-                                <td>google maps</td>
-                                <td>1515 takahssusi road, Ar Riyadh</td>
-                                <td>1515 takahssusi road, Ar Riyadh</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
                             </tr>
                             <tr>
                                 <th scope="row">2</th>

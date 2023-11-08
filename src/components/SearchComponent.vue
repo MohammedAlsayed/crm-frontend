@@ -15,17 +15,9 @@
                         <tbody class="table-group-divider">
                             <tr v-for="(row, index) in tableData" scope="col" :key="index">
                                     <th scope="row">{{ index }}</th>
-                                    <td>{{ row.date }}</td>
-                                    <td>{{ row.close_date }}</td>
-                                    <td>{{ row.price }}</td>
-                                    <td>{{ row.quantity }}</td>
-                                    <td>{{ row.product }}</td>
-                                    <td>{{ row.amount }}</td>
-                                    <td>{{ row.client }}</td>
-                                    <td>{{ row.department }}</td>
-                                    <td>{{ row.doctor_name }}</td>
-                                    <td>{{ row.close_percent }}</td>
-                                    <td>{{ row.notes }}</td>
+                                    <td v-for="item in row">
+                                        {{ item }}
+                                    </td>
                             </tr>
                         </tbody>
                     </DataTable>

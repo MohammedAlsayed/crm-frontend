@@ -22,7 +22,7 @@
                 <div class="tab-content">
                     <NewClientAccount/>
                     <AddContacts/>
-                    <SearchClient/>
+                    <SearchComponent idTarget="search-client"  :columns="columnNames" :tableData="tableData" />
                 </div>
             </div>
         </div>
@@ -31,15 +31,36 @@
 
 <script lang="ts">
 import NewClientAccount from '../client_accounts/NewClientAccount.vue'
-import SearchClient from '../client_accounts/SearchClient.vue'
 import AddContacts from '../client_accounts/AddContacts.vue'
+import SearchComponent from '@/components/SearchComponent.vue'
 
 export default{
     components:{
         NewClientAccount,  
-        SearchClient,
+        SearchComponent,
         AddContacts,
-},
+    },
+    data(){
+        return {
+            columnNames: [
+                'client_code','ar_client_name','en_client_name',
+                'website','phone','location','national_address'],
+            tableData:[
+                ['C-000820', '..', 'Ted Alhayat', 
+                'www.ted.com', '0555555555', 'google maps',
+                '1515 takahssusi road, Ar Riyadh'],
+                ['C-000821', '..', 'Ted Specialist',
+                'www.ted.com', '0555555555', 'google maps',
+                '1515 takahssusi road, Ar Riyadh'],
+                ['C-000822', '..', 'SMC2',
+                'www.ted.com', '0555555555', 'google maps',
+                '1515 takahssusi road, Ar Riyadh'],
+                ['C-000822', '..', 'SMC2',
+                'www.ted.com', '0555555555', 'google maps',
+                '1515 takahssusi road, Ar Riyadh']
+            ]
+        }
+    }
 }
 </script>
 <style>
