@@ -20,9 +20,9 @@
                     </li>
                 </ul>
                 <div class="tab-content">
-                    <NewClientAccount/>
+                    <NewClientAccount @onClientAdded="updateTable"/>
                     <AddContacts/>
-                    <SearchComponent idTarget="search-client"  :columns="columnNames" :tableData="tableData" />
+                    <SearchComponent idTarget="search-client"  :columns="columnNames" :columnMap="columnMap" :tableData="tableData" />
                 </div>
             </div>
         </div>
@@ -33,6 +33,8 @@
 import NewClientAccount from '../client_accounts/NewClientAccount.vue'
 import AddContacts from '../client_accounts/AddContacts.vue'
 import SearchComponent from '@/components/SearchComponent.vue'
+import axios from 'axios';
+
 
 export default{
     components:{
@@ -44,21 +46,33 @@ export default{
         return {
             columnNames: [
                 'client_code','ar_client_name','en_client_name',
-                'website','phone','location','national_address'],
-            tableData:[
-                ['C-000820', '..', 'Ted Alhayat', 
-                'www.ted.com', '0555555555', 'google maps',
-                '1515 takahssusi road, Ar Riyadh'],
-                ['C-000821', '..', 'Ted Specialist',
-                'www.ted.com', '0555555555', 'google maps',
-                '1515 takahssusi road, Ar Riyadh'],
-                ['C-000822', '..', 'SMC2',
-                'www.ted.com', '0555555555', 'google maps',
-                '1515 takahssusi road, Ar Riyadh'],
-                ['C-000822', '..', 'SMC2',
-                'www.ted.com', '0555555555', 'google maps',
-                '1515 takahssusi road, Ar Riyadh']
-            ]
+                'website','phone','city'],
+            tableData: null,
+        }
+    },
+    mounted(){
+        this.getAllClientAccounts();
+    },
+    methods:{
+        getAllClientAccounts(){
+            console.log('get all client accounts');
+            axios.get(this.host+'/api/client')
+            .then(response => {
+                if(response.status == 200){
+                    this.tableData = response.data;
+                var result = [];
+                response.data.forEach((item: { id: number, arabicName: string, englishName: string, website: string, phone: string, city: string }) => {
+                    result.push(['C-'+item.id, item.arabicName, item.englishName, item.website, item.phone, item.city]);
+                });
+                this.tableData = result;
+            }
+            })
+            .catch(error => {
+                console.log(error);
+            })
+        },
+        updateTable(client: any){
+            this.tableData.push(client);
         }
     }
 }

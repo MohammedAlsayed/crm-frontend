@@ -13,6 +13,8 @@ import i18n from './components/i18n.ts'
 
 const app = createApp(App)
 
+app.config.globalProperties.host = 'https://localhost:7222'
+
 app.use(createPinia())
 app.use(router)
 app.use(i18n);

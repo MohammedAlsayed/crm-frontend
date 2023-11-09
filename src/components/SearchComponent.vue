@@ -3,22 +3,17 @@
         <div class="row mt-4">
             <div class="card">
                 <div class="card-body search-body">
-                    <DataTable class="table table-hover client-search-width">
+                    <DataTable :data="tableData" class="table table-hover client-search-width display" width="100%">
                         <thead class="table-success">
                             <tr>
-                                <th scope="col">#</th>
+                                <!-- <th scope="col">#</th> -->
                                 <th v-for="col in columns" scope="col" :key="col">
                                     {{ $t(col) }}
                                 </th>
                             </tr>
                         </thead>
                         <tbody class="table-group-divider">
-                            <tr v-for="(row, index) in tableData" scope="col" :key="index">
-                                    <th scope="row">{{ index }}</th>
-                                    <td v-for="item in row">
-                                        {{ item }}
-                                    </td>
-                            </tr>
+                            
                         </tbody>
                     </DataTable>
                 </div>
@@ -31,6 +26,7 @@ import DataTable from 'datatables.net-vue3';
 import DataTablesCore from 'datatables.net';
 import Select from 'datatables.net-select';
 import 'datatables.net-responsive';
+
 
 DataTable.use(DataTablesCore);
 DataTable.use(Select);

@@ -28,7 +28,7 @@
         "crm": "إدارة علاقات العملاء",
         "client_accounts": "حسابات العملاء",
         "development_plans": "خطط التطوير",
-        "forecast": "التوقعات",
+        "forecast": "التنبؤات",
         "weekly_plans": "الخطط الأسبوعية",
         "visits": "الزيارات",
         "price_quotation": "تسعيرة",
@@ -83,7 +83,7 @@
         "dev_plan_action":"خطة تطوير العمل",
         "dev_plan_status":"حالة خطة التطوير",
 
-        "new_forecast":"تنبؤ جديد",
+        "new_forecast":"إضافة تنبؤ جديد",
         "search_forecast":"البحث في التنبؤات",
 
         "new_weekly_plan":"خطة أسبوعية جديدة",
