@@ -40,24 +40,17 @@
                                 </div>
                             </div>
                             <div class="form-group row mb-4">
-                                <label for="" class="col-lg-3 col-form-label">{{ $t('location') }}</label>
+                                <label for="" class="col-lg-3 col-form-label">{{ $t('city') }}</label>
                                 <div class="col-lg-9">
-                                    <input v-model.trim="location" type="text" class="form-control">
+                                    <input v-model.trim="city" type="text" class="form-control">
                                 </div>
                             </div>
-                            <!-- <div class="form-group row mb-4">
-                                <label for="" class="col-lg-3 col-form-label">{{ $t('national_address') }}</label>
-                                <div class="col-lg-9">
-                                    <input v-model.trim="national_address" type="text" class="form-control">
-                                </div>
-                            </div> -->
                             <div class="d-grid gap-2 d-flex justify-content-end">
                                 <!-- <button type="reset" class="btn btn-primary me-md-2 float-left">Clear</button> -->
                                 <button type="submit" class="btn btn-success me-md-2 float-right">Save</button>
                             </div>
                         </form>
                         </div>
-                        
                     </div>
                 </div>
         </div>
@@ -83,7 +76,7 @@ export default{
             englishName: '',
             website: '',
             phone: '',
-            location: '',
+            city: '',
         }
     },
     watch: {
@@ -97,16 +90,17 @@ export default{
     methods: {
         save() {
             axios.post(this.host+'/api/client', {
+                id: this.clientCode,
                 arabicName: this.arabicName,
                 englishName: this.englishName,
                 website: this.website,
                 phone: this.phone,
-                location: this.location,
+                city: this.city,
             }).then(response => {
                 if(response.status == 201){
                     this.$refs.alert.showAlert('success', "Client account created successfully");
                     // clear the form
-                    const newClient = [this.clientCode, this.arabicName, this.englishName, this.website, this.phone, this.location]
+                    const newClient = [this.clientCode, this.arabicName, this.englishName, this.website, this.phone, this.city]
                     this.$emit('onClientAdded', newClient)
                     this.clearForm()
                     this.getNextId()
@@ -131,7 +125,7 @@ export default{
             axios.get(this.host+'/api/client/nextid')
             .then(response => {
                 if(response.status == 200){
-                    this.clientCode = 'C-'+response.data;
+                    this.clientCode = response.data;
                 }
                 else{
                     console.log(response.data);

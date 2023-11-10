@@ -18,7 +18,16 @@
                 </ul>
                 <div class="tab-content">
                     <NewDevPlan/>
-                    <SearchComponent idTarget="search-dev-plan" :columns="columnNames" :tableData="tableData" />
+                    <div class="tab-pane fade" id="search-dev-plan" role="tabpanel" aria-labelledby="search-forecast-tab">
+                        <div class="row mt-4">
+                            <div class="card">
+                                <div class="card-body table-body">
+                                    <TableComponent :columns="columnNames" :tableData="tableData" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
                 </div>
             </div>
         </div>
@@ -27,11 +36,11 @@
 
 <script lang="ts">
 import NewDevPlan from '../development_plan/NewDevPlan.vue';
-import SearchComponent from '@/components/SearchComponent.vue';
+import TableComponent from '@/components/TableComponent.vue';
 
 export default{
     components: { 
-        NewDevPlan, SearchComponent 
+        NewDevPlan, TableComponent 
     },
     data(){
         return {

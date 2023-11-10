@@ -23,7 +23,7 @@
                 </ul>
                 <div class="tab-content">
                     <NewWeeklyPlan/>
-                    <SearchComponent idTarget="search-weekly-plan"  :columns="columnNames" :tableData="tableData" />
+                    <TableComponent idTarget="search-weekly-plan"  :columns="columnNames" :tableData="tableData" />
                 </div>
             </div>
         </div>
@@ -31,10 +31,10 @@
 </template>
 <script lang="ts">
 import NewWeeklyPlan from '../weekly_plans/NewWeeklyPlan.vue'
-import SearchComponent from '@/components/SearchComponent.vue'
+import TableComponent from '@/components/TableComponent.vue'
 
 export default{
-    components: { NewWeeklyPlan, SearchComponent },
+    components: { NewWeeklyPlan, TableComponent },
     data (){
         return {
             columnNames: [

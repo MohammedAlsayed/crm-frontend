@@ -18,7 +18,7 @@
                 </ul>
                 <div class="tab-content">
                     <NewForecast/>
-                    <SearchComponent idTarget="search-forecast" :columns="columnNames" :tableData="tableData" />
+                    <TableComponent idTarget="search-forecast" :columns="columnNames" :tableData="tableData" />
                 </div>
             </div>
         </div>
@@ -26,10 +26,10 @@
 </template>
 <script lang="ts">
 import NewForecast from '../forecast/NewForecast.vue'
-import SearchComponent from '@/components/SearchComponent.vue';
+import TableComponent from '@/components/TableComponent.vue';
 
 export default{
-    components: { NewForecast, SearchComponent},
+    components: { NewForecast, TableComponent},
     data(){
         return {
             columnNames: ['date','dev_plan_action','dev_plan_status',

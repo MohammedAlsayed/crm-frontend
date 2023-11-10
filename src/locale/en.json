@@ -15,6 +15,7 @@
         "amount":"Amount",
         "close_date": "Close Date",
         "close_percent": "Close Percent",
+        "city":"City",
 
         "success_login": "Welcome Back!",
         "new_client": "New Client Account Added Successfully",
@@ -22,7 +23,7 @@
         "fail_login": "User Name or Password is incorrect",
         "server_error": "Sorry, had an issue when connecting to the server",
     
-        "title": "User Login",
+        "login_title": "User Login",
         "userName": "User Name",
         "password": "Password",
         "rememberMe": "Remember Me",
@@ -83,6 +84,8 @@
         "phone": "Phone",
         "location": "Location",
         "national_address": "National Address",
+        "search_client":"Search Client",
+        "client_contacts":"Client Contacts",
     
         "new_dev_plan":"New Development Plan",
         "search_dev_plan":"Search in Development Plans",
@@ -97,5 +100,13 @@
         "planned_date":"Planned Date",
         "account1": "Account1",
         "account2": "Account2",
-        "account3": "Account3"
+        "account3": "Account3",
+        "arabic_dr_name":"Arabic Dr Name",
+        "english_dr_name":"English Dr Name",
+        "doctor_grade": "Doctor Grade",
+        "email":"Email",
+
+        "update_client_contact": "Add/Modify Client Contact",
+        "id": "ID",
+        "dr_grade":"Doctor Grade"
 }
