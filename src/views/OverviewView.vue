@@ -78,8 +78,6 @@
 </template>
 
 <script lang="ts">
-import Header from '../views/Header.vue';
-import SideBar from '../views/SideBar.vue';
 import Chart from 'chart.js/auto';
 import yearlyTarget from '../charts_data/yearlyTarget.js';
 import employeeTarget from '../charts_data/employeeTarget.js';
@@ -89,10 +87,6 @@ import poYearly from '../charts_data/poYearly.js';
 import poQuartly from '../charts_data/poQuartly.js'; 
 
 export default{
-    components:{
-        Header,
-        SideBar,
-    },
     mounted(){
         new Chart(document.getElementById('yearlyTarget'), yearlyTarget);
         new Chart(document.getElementById('employeeTarget'), employeeTarget);

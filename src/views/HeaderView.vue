@@ -32,7 +32,7 @@
 
 <script>
 export default{
-    name: 'Header',
+    name: 'HeaderView',
     mounted(){
         let user = localStorage.getItem('user-info');
         if (!user){

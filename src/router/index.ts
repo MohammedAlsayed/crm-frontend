@@ -1,13 +1,13 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import LoginView from '../views/LoginView.vue'
 import MainView from '../views/MainView.vue'
-import Overview from '../views/Overview.vue'
+import OverviewView from '../views/OverviewView.vue'
 
 import ClientAccounts from '../views/crm/ClientAccounts.vue'
 import DevelopmentPlan from '../views/crm/DevelopmentPlan.vue'
-import Forecast from '../views/crm/Forecast.vue'
+import ForecastView from '../views/crm/ForecastView.vue'
 import WeeklyPlans from '../views/crm/WeeklyPlans.vue'
-import Visits from '../views/crm/Visits.vue'
+import VisitsView from '../views/crm/VisitsView.vue'
 import PriceQuotation from '../views/crm/PriceQuotation.vue'
 import PurchaseOrder from '../views/crm/PurchaseOrder.vue'
 import DeliveryNotes from '../views/crm/DeliveryNotes.vue'
@@ -16,8 +16,8 @@ import CustodyOperation from '../views/crm/CustodyOperation.vue'
 import StockOperation from '../views/crm/StockOperation.vue'
 import ClientStockLevel from '../views/crm/ClientStockLevel.vue'
 import ProductLine from '../views/crm/ProductLine.vue'
-import Product from '../views/crm/Product.vue'
-import Target from '../views/crm/Target.vue'
+import ProductView from '../views/crm/ProductView.vue'
+import TargetView from '../views/crm/TargetView.vue'
 import UserPermission from '../views/crm/UserPermission.vue'
 
 const router = createRouter({
@@ -35,7 +35,7 @@ const router = createRouter({
         {
           path: '/overview',
           name: 'Overview',
-          component: Overview
+          component: OverviewView
         },
         {
           path: '/client_accounts',
@@ -50,7 +50,7 @@ const router = createRouter({
         {
           path: '/forecast',
           name: 'Forecast',
-          component: Forecast
+          component: ForecastView
         },
         {
           path: '/weekly_plans',
@@ -60,7 +60,7 @@ const router = createRouter({
         {
           path: '/visits',
           name: 'Visits',
-          component: Visits
+          component: VisitsView
         },
         {
           path: '/price_quotation',
@@ -105,12 +105,12 @@ const router = createRouter({
         {
           path: '/product',
           name: 'Product',
-          component: Product
+          component: ProductView
         },
         {
           path: '/target',
           name: 'Target',
-          component: Target
+          component: TargetView
         },
         {
           path: '/user_permission',

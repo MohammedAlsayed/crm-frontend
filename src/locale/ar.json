@@ -75,8 +75,7 @@
         "expected_target":"الهدف المتوقع",
     
         "new_client_account": "إضافة عميل جديد",
-        "add_contacts":"إضافة جهات اتصال",
-        "search_in_client_accounts": "البحث في حسابات العملاء",
+        "search_in_client_accounts": "البحث / تعديل في حسابات العملاء",
         "client_code": "رمز العميل",
         "ar_client_name": "اسم العميل بالعربي",
         "en_client_name": "اسم العميل بالإنجليزي",
@@ -107,5 +106,7 @@
         "email":"البريد الإلكتروني",
 
         "update_client_contact": "إضافة / تعديل جهة اتصال",
-        "id": "الرقم"
+        "id": "الرقم",
+        "accounts":"حسابات",
+        "contacts":"جهات اتصال"
 }

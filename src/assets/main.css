@@ -60,3 +60,24 @@ padding-right: 0 !important;
 label > div{
   width: 30% !important;
 }
+
+.btn-success:active{
+  background-color: hsla(160, 100%, 37%, 1) !important;
+  background-size: 100% !important;
+  transition: background 0s !important;
+}
+.btn-danger:active{
+  background-color: rgb(255, 108, 108) !important;
+  background-size: 100% !important;
+  transition: background 0s !important;
+}
+.btn-primary:active{
+  background-color: rgb(108, 189, 255) !important;
+  background-size: 100% !important;
+  transition: background 0s !important;
+}
+@media (min-width: 992px) {
+  .label{
+    width: 140px !important;
+  }  
+}

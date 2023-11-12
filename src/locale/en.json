@@ -75,8 +75,8 @@
         "expected_target":"Expected Target",
     
         "new_client_account": "New Client Account",
-        "add_contacts":"Add Contacts",
-        "search_in_client_accounts": "Search in Client Accounts",
+        "Client_contacts":"Client Contacts",
+        "search_in_client_accounts": "Search / Modify in Client Accounts",
         "client_code": "Client Code",
         "ar_client_name": "Ar Client's Name",
         "en_client_name": "En Client's Name",
@@ -108,5 +108,7 @@
 
         "update_client_contact": "Add/Modify Client Contact",
         "id": "ID",
-        "dr_grade":"Doctor Grade"
+        "dr_grade":"Doctor Grade",
+        "accounts":"Accounts",
+        "contacts":"Contacts"
 }

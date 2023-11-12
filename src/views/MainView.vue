@@ -1,5 +1,5 @@
 <template>
-    <Header></Header>
+    <HeaderView></HeaderView>
     <SideBar></SideBar>
     <main>
         <router-view />
@@ -8,13 +8,13 @@
 </template>
 
 <script>
-import Header from './Header.vue';
+import HeaderView from './HeaderView.vue';
 import SideBar from './SideBar.vue';
 
 export default{
     components:{
-    Header,
-    SideBar,
+        HeaderView,
+        SideBar,
 },
     mounted(){
         let user = localStorage.getItem('user-info');
