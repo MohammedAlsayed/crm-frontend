@@ -1,5 +1,6 @@
 <template>
     <div class="container">
+        <AlertComponent ref="alert"/>
         <div class="row">
             <div class="col-lg-12">
                 <ul class="nav nav-tabs" role="tablist">
@@ -15,7 +16,7 @@
                         <div class="row mt-4 mb-5">
                             <div class="card">
                                 <div class="card-body table-body">
-                                    <TableComponent :columns="clientHeader" :tableData="tableData" :createModal="createView" :editModal="editView" @onEdit="getRecord"/>
+                                    <TableComponent :columns="clientHeader" :tableData="tableData" :createModal="createView" :editModal="editView" @onEdit="getRecord" @onDelete="deleteRecord"/>
                                     <NewClient @onClientAdded="addToTable"/>
                                     <EditClient :clientObj="toEditRecord" @onClientEdited="updateTable"/>
                                 </div>
@@ -36,6 +37,7 @@ import NewClient from '../client_accounts/NewClient.vue'
 import EditClient from '../client_accounts/EditClient.vue'
 import ClientContacts from '../client_accounts/ClientContacts.vue'
 import TableComponent from '@/components/TableComponent.vue'
+import AlertComponent from '@/components/AlertComponent.vue'
 import axios from 'axios';
 
 
@@ -46,6 +48,7 @@ export default{
         EditClient,
         TableComponent,
         ClientContacts,
+        AlertComponent
     },
     data(){
         return {
@@ -84,6 +87,7 @@ export default{
             this.tableData.push([client.id, client.arName, client.enName, client.website, client.phone, client.city]);
         },
         getRecord(client: any){
+            this.toEditRecord.rowIdx = client.rowIdx;
             this.toEditRecord.id = client.id;
             this.toEditRecord.arName = client.ar_client_name;
             this.toEditRecord.enName = client.en_client_name;
@@ -91,8 +95,24 @@ export default{
             this.toEditRecord.phone = client.phone;
             this.toEditRecord.city = client.city;
         },
+        async deleteRecord(client: any){
+            try{
+                const result = await axios.delete(this.host+'/api/client/'+client.id)
+                if (result.status == 204){
+                    this.tableData.splice(client.rowIdx, 1);
+                    this.$refs.alert.showAlert("success", "Deleted successfully");
+                }
+                else{
+                    console.log(result);
+                    this.$ref.alert.showAlert("danger", "Error couldn't delete");
+                }
+            }catch(error){
+                console.log(error);
+                this.$ref.alert.showAlert("danger", "Error couldn't delete");
+            }
+        },
         updateTable(client: any){
-            var toUpdateRecord = this.tableData[client.id-1]
+            var toUpdateRecord = this.tableData[client.rowIdx]
             toUpdateRecord[1] = client.arName ? client.arName : toUpdateRecord[1];
             toUpdateRecord[2] = client.enName ? client.enName : toUpdateRecord[2];
             toUpdateRecord[3] = client.website ? client.website : toUpdateRecord[3];

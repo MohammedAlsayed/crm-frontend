@@ -128,7 +128,7 @@ export default{
                 const updatedRecord = this.getFormData();
                 const response = await axios.put(this.host+'/api/client/'+this.clientCode, updatedRecord);
                 if(response.status == 204){
-                    this.$refs.alert.showAlert("success", "Client updated successfully");
+                    this.$refs.alert.showAlert("success", "Updated successfully");
                     this.$emit('onClientEdited', updatedRecord);
                     this.close.click();
                     this.loading = false;
@@ -136,16 +136,17 @@ export default{
                 else{
                     this.loading = false;
                     console.log('error update: ',response);
-                    this.$refs.alert.showAlert("danger", "Error while trying to update client");
+                    this.$refs.alert.showAlert("danger", "Error while trying to update");
                 }
             }catch(error){
                 console.log('error update: ',error);
                 this.loading = false;
-                this.$refs.alert.showAlert("danger", "Error while trying to update client");
+                this.$refs.alert.showAlert("danger", "Error while trying to update");
             }
        },
         getFormData(){
             var formData = {};
+            formData['rowIdx'] = this.clientObj.rowIdx;
             if (this.clientCode != '') formData["id"] = this.clientCode;
             if (this.arabicName != '') formData["arName"] = this.arabicName;
             if (this.englishName != '') formData["enName"] = this.englishName;

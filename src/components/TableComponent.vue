@@ -2,9 +2,9 @@
     <div class="d-flex justify-content-start">
         <button class="btn btn-table text-black" data-bs-toggle="modal" :data-bs-target="createModal" >NEW</button>
         <button @click="editRecord" ref="editBtn" class="btn btn-table text-black" disabled data-bs-toggle="modal" :data-bs-target="editModal" >EDIT</button>
-        <button ref="deleteBtn" class="btn btn-table text-black" disabled>DELETE</button>
+        <button @click="deleteRecord" ref="deleteBtn" class="btn btn-table text-black" disabled>DELETE</button>
     </div>
-    <DataTable ref="table" :options="{ select: 'single', dom: 'frtip'}" :data="tableData" v-on:[`select`]="selectRow" v-on:[`deselect`]="deselectRow" class="table table-hover display" width="100%">
+    <DataTable ref="table" :options="{ select: 'single', dom: 'frtip'}" :data="tableData" v-on:[`select`]="selectRow" v-on:[`deselect`]="deSelectRow" class="table table-hover display" width="100%">
             <thead class="table-success">
                 <tr>
                     <th v-for="col in columns" scope="col" :key="col">
@@ -87,7 +87,7 @@ export default{
             console.log('delete record');
             this.$emit('onDelete', this.record);
         },
-        deselectRow(e){
+        deSelectRow(e){
             this.editBtn.disabled = true;
             this.deleteBtn.disabled = true;
         },
@@ -96,6 +96,10 @@ export default{
             console.log();
             this.editBtn.disabled = false;
             this.deleteBtn.disabled = false;
+
+            const rowIdx = e.dt.value.rows({selected: true})[0][0];
+            this.record['rowIdx'] = rowIdx;
+
             const selectedRecord = e.dt.value.rows({selected: true}).data().toArray()[0]; 
             for (let i = 0; i < this.columns.length; i++) {
                 this.record[this.columns[i]] = selectedRecord[i];
