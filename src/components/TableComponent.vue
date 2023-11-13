@@ -1,7 +1,7 @@
 <template>
     <div class="d-flex justify-content-start">
         <button class="btn btn-table text-black" data-bs-toggle="modal" :data-bs-target="createModal" >NEW</button>
-        <button ref="editBtn" class="btn btn-table text-black" disabled data-bs-toggle="modal" :data-bs-target="editModal" >EDIT</button>
+        <button @click="editRecord" ref="editBtn" class="btn btn-table text-black" disabled data-bs-toggle="modal" :data-bs-target="editModal" >EDIT</button>
         <button ref="deleteBtn" class="btn btn-table text-black" disabled>DELETE</button>
     </div>
     <DataTable ref="table" :options="{ select: 'single', dom: 'frtip'}" :data="tableData" v-on:[`select`]="selectRow" v-on:[`deselect`]="deselectRow" class="table table-hover display" width="100%">
@@ -30,7 +30,7 @@ DataTable.use(Select);
 
 
 export default{
-    emits: ["create", "edit", "delete"],
+    emits: ["onEdit", "onDelete"],
     components:{
         DataTable
     },
@@ -38,7 +38,7 @@ export default{
         const table = ref()
         const editBtn = ref()
         const deleteBtn = ref()
-        var record = null;
+        var record = {};
         let dt = null;
         return {
             table,
@@ -80,31 +80,26 @@ export default{
     },
     methods:{
         editRecord(){
-            console.log('update record');
-            this.$emit('edit', this.record);
+            console.log('edit record');
+            this.$emit('onEdit', this.record);
         },
         deleteRecord(){
             console.log('delete record');
-            this.$emit('delete', this.record);
+            this.$emit('onDelete', this.record);
         },
         deselectRow(e){
-            console.log('deselect row');
             this.editBtn.disabled = true;
             this.deleteBtn.disabled = true;
         },
         // emits an event with the selected row data
         selectRow(e){    
-            console.log('select row');
             console.log();
             this.editBtn.disabled = false;
             this.deleteBtn.disabled = false;
-            this.record = e.dt.value.rows({selected: true}).data().toArray()[0];
-            // var record = {}
-            // for (var i = 0; i < this.columns.length; i++) {
-            //     record[this.columns[i]] = e.dt.value.rows({selected: true}).data().toArray()[0][i];
-            // }
-            // 
-            // console.log(e.dt.value.rows({selected: true}).data().toArray()[0]);
+            const selectedRecord = e.dt.value.rows({selected: true}).data().toArray()[0]; 
+            for (let i = 0; i < this.columns.length; i++) {
+                this.record[this.columns[i]] = selectedRecord[i];
+            }
         }
     },
 }

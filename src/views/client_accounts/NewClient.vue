@@ -1,6 +1,6 @@
 <template>
 <AlertComponent ref="alert"/>
-<div class="modal fade" id="createClient" tabindex="-1" aria-hidden="true">
+<div class="modal fade" id="createClientModal" tabindex="-1" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -11,7 +11,7 @@
         </div> 
       </div>
       <div class="modal-body">
-        <form @submit.prevent="save" class="ms-5 me-5">
+        <form @submit.prevent="save" class="ms-3 me-3">
                 <div class="form-group row mb-4">
                     <div class="col-lg-3 label">
                         <label for="" class="col-form-label">{{ $t('client_code') }}</label>
