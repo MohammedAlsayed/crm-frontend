@@ -1,4 +1,5 @@
 {
+
         "SAR":"SAR",
         "visit":"Visit",
         "general_info": "General Info",
@@ -101,14 +102,15 @@
         "account1": "Account1",
         "account2": "Account2",
         "account3": "Account3",
-        "arabic_dr_name":"Arabic Dr Name",
-        "english_dr_name":"English Dr Name",
-        "doctor_grade": "Doctor Grade",
+        "arabic_name":"Arabic Name",
+        "english_name":"English Name",
+        "grade": "Grade",
         "email":"Email",
 
         "update_client_contact": "Add/Modify Client Contact",
         "id": "ID",
-        "dr_grade":"Doctor Grade",
         "accounts":"Accounts",
-        "contacts":"Contacts"
+        "contacts":"Contacts",
+
+        "new_contact": "New Contact"
 }

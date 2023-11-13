@@ -16,7 +16,7 @@
                         <div class="row mt-4 mb-5">
                             <div class="card">
                                 <div class="card-body table-body">
-                                    <TableComponent :columns="clientHeader" :tableData="tableData" :createModal="createView" :editModal="editView" @onEdit="getRecord" @onDelete="deleteRecord"/>
+                                    <TableComponent ref="table" :columns="clientHeader" :tableData="tableData" :createModal="createView" :editModal="editView" @onEdit="getRecord" @onDelete="deleteRecord"/>
                                     <NewClient @onClientAdded="addToTable"/>
                                     <EditClient :clientObj="toEditRecord" @onClientEdited="updateTable"/>
                                 </div>
@@ -39,7 +39,6 @@ import ClientContacts from '../client_accounts/ClientContacts.vue'
 import TableComponent from '@/components/TableComponent.vue'
 import AlertComponent from '@/components/AlertComponent.vue'
 import axios from 'axios';
-
 
 
 export default{
@@ -101,14 +100,16 @@ export default{
                 if (result.status == 204){
                     this.tableData.splice(client.rowIdx, 1);
                     this.$refs.alert.showAlert("success", "Deleted successfully");
+                    this.$refs.table.editBtn.disabled = true;
+                    this.$refs.table.deleteBtn.disabled = true;
                 }
                 else{
                     console.log(result);
-                    this.$ref.alert.showAlert("danger", "Error couldn't delete");
+                    this.$ref.alert.showAlert("danger", "Error couldn't delete the record");
                 }
             }catch(error){
                 console.log(error);
-                this.$ref.alert.showAlert("danger", "Error couldn't delete");
+                this.$ref.alert.showAlert("danger", "Error couldn't delete the record");
             }
         },
         updateTable(client: any){

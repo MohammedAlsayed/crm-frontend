@@ -41,7 +41,7 @@
                         <label for="" class="col-form-label">{{ $t('website') }}</label>
                     </div>
                     <div class="col-lg-8">
-                        <input v-model.trim="website" type="url" class="form-control">
+                        <input v-model.trim="website" type="url" class="form-control" placeholder="http://example.com">
                     </div>
                 </div>
                 <div class="form-group row mb-4">

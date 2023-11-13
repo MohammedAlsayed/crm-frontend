@@ -15,12 +15,12 @@
                                     <div class="input-group">
                                         <input type="text" class="form-control" v-model="searchTerm" placeholder="Search in names...">
                                     </div>
-                                    <ul v-if="clientList.length && selectedClient == null"  class="w-75 rounded border px-4 py-2 mt-1 position-absolute bg-white" style="z-index: 99;">
+                                    <ul v-if="shortResult.length > 0 && selectedClient === null"  class="w-75 rounded border px-4 py-2 mt-1 position-absolute bg-white" style="z-index: 99;">
                                             <li class="dropdown-item cursor-pointer pt-1 pb-1 ps-2 fw-bold border-bottom">
-                                                Showing {{ clientList.length }} of {{searchClients.length}} results
+                                                Showing {{ shortResult.length }} of {{allSearchResult.length}} results
                                             </li>
-                                            <li @click="selectedClientName(client)" v-for="client in clientList" :key="client.id" class="dropdown-item cursor-pointer pt-1 pb-1 ps-2 list">
-                                                {{ client.enName }}
+                                            <li @click="listSelect(client)" v-for="client in shortResult" :key="client.id" class="dropdown-item cursor-pointer pt-1 pb-1 ps-2 list">
+                                                {{client.id}}: {{ client.enName }}
                                             </li>
                                     </ul>
                                 </div>   
@@ -43,19 +43,9 @@
                         <span>{{ $t('client_contacts') }}</span>
                     </div>
                     <div class="card-body">
-                        <TableComponent :columns="contactHeader" :tableData="contactsTable" />
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row mt-4 mb-5">
-            <div class="col-lg-12">
-                <div class="card">
-                    <div class="card-header text-center">
-                        <span>{{ $t('update_client_contact') }}</span>
-                    </div>
-                    <div class="card-body">
-                       
+                        <TableComponent ref="table" :columns="contactHeader" :isNewDisabled=true :tableData="contactsTable" :createModal="createView"/>
+                        <NewContact :clientId="clientId" @onContactAdded="addToTable"/>
+                        <!-- <TableComponent :columns="clientHeader" :tableData="tableData" :createModal="createView" :editModal="editView" @onEdit="getRecord" @onDelete="deleteRecord"/> -->
                     </div>
                 </div>
             </div>
@@ -66,56 +56,58 @@
 <script lang="ts">
 import TableComponent from '@/components/TableComponent.vue'
 import AlertComponent from '@/components/AlertComponent.vue'
-import { ref } from 'vue'
+import NewContact from './NewContact.vue'
 
 export default{
     components: {
     TableComponent,
-    AlertComponent
+    AlertComponent,
+    NewContact,
     },
     data(){
         return{
-            // conditions
-            populated: false,
-
             // client search names
             searchTerm: '',
-            searchClients: [],
-            clientList: [],
-            selectedClient: null,
+            allSearchResult: [],
+            shortResult: [],
 
+            selectedClient: null,
+            // newBtnDisabled: true,
+
+            clientId: -1,
+                
             // client contacts table
             contactHeader: [
-                "id","arabic_dr_name", 
-            "english_dr_name",
-            "email","dr_grade", "phone", "department"
+                "id","arabic_name", 
+                "english_name",
+                "email","grade", "phone", "department"
             ],
-            contactsTable: [],
-
-            // client contact form
-            drArabicName: '',
-            drEnglishName: '',
-            drEmail: '',
-            grade: '',
-            department: '',
-            phone: '',
+            contactsTable: [],   
             
+            createView: '#createContactModal',
         }
     },
     watch: {
-        searchTerm(newVale, oldValue){
-            this.resetTab();
-            var result = this.searchClients.filter(client => {
-                return client.enName.toLowerCase().includes(newVale.toLowerCase())
-            });
-            if (result.length == 1 && newVale === result[0].enName){
-                this.selectedClient = result;
+        searchTerm(newVal, oldVal){
+            const result = this.allSearchResult.filter(client => client.enName === newVal);
+            if(result.length == 1){
+                this.listSelect[result[0]]
+                return;
             }
-            else if (newVale == ''){
-                this.clientList = [];
-            }else{
-                this.getNames(newVale);
-                this.selectedClient = null;
+            
+            // // if he didn't select from the list reset all values
+            // // if he selected from the list the difference between old and new val length will be greater than 1
+            if(newVal.length == oldVal.length+1 || newVal.length == oldVal.length-1){
+                this.resetTab();
+            }
+        
+            if(newVal == ''){
+                this.resetTab();
+                this.shortResult = [];
+                return;
+            }
+            if(this.selectedClient === null){
+                this.getNames(newVal);
             }
         }
     },
@@ -123,113 +115,69 @@ export default{
         // ############## client search names ##############
         async getNames(term){
             try {
-                const url = this.host+'/api/client/searchNames/'+term;
-                const res = await fetch(url)
-                this.searchClients = (await res.json())
-                this.clientList = this.searchClients.slice(0,10)
+                const parsedTerm = encodeURIComponent(term)
+                const url = new URL(this.host+'/api/client/searchNames/'+parsedTerm);
+                const res = await fetch(url.href)
+                this.allSearchResult = (await res.json())
+                this.shortResult = this.allSearchResult.slice(0,10)
             } catch (error) {
                 console.log(error);
             }
         },
         // check if the user selected a name from the list
-        selectedClientName(client){
+        listSelect(client){
             this.searchTerm = client.enName;
             this.selectedClient = client;
+            this.clientId = this.selectedClient.id;
+            this.shortResult = [];
         },
         // ############## search contacts for the selected client  ##############
         async search(){
-            if(this.selectedClient == null){
-                this.$refs.alert.showAlert('warning', "Please select a client name first");
+            if(this.selectedClient === null){
+                this.$refs.alert.showAlert('warning', "Please select a client from the list first");
                 return;
             }
-            else if(this.contactsTable.length > 0){
+            if(this.contactsTable.length > 0){
                 return;
             }
-            else{
-                const clientId = this.selectedClient[0].id
-                const url = this.host+'/api/client/'+clientId;
+
+            this.clientId = this.selectedClient.id
+            const url = this.host+'/api/client/'+this.clientId;
+            try{
                 const res = await fetch(url)
-                var clientContacts = (await res.json())
-                clientContacts.contacts.forEach(contact => {
-                    this.contactsTable.push([contact.id, contact.enName, 
-                    contact.arName, contact.email, 
-                    contact.grade, contact.phone, contact.department
-                    ]); 
-                });
-            }
-        },
-        // ############## populate the contact form if contact record was selected from the table ##############
-        populateContact(record){
-            this.populated = true;
-            this.drArabicName = record.arabic_dr_name;
-            this.drEnglishName = record.english_dr_name;
-            this.drEmail = record.email;
-            this.grade = record.dr_grade;
-            this.phone = record.phone;
-            this.department = record.department;
-        },
-        // ############## add a contact to client ##############
-        async addContact(){
-            if(this.selectedClient == null){
-                this.$refs.alert.showAlert('warning', "Please select a client name first");
-                return;
-            }
-            // create new contact
-            else if(this.populated == false){
-                const clientId = this.selectedClient[0].id
-                const url = this.host+'/api/contact/';
-                try {
-                    const res = await fetch(url, {
-                        method: "POST",
-                        headers: {
-                            "Content-Type": "application/json",
-                        },
-                        body: JSON.stringify({
-                            clientId: clientId,
-                            arName: this.drArabicName,
-                            enName: this.drEnglishName,
-                            email: this.drEmail,
-                            grade: this.grade,
-                            phone: this.phone,
-                            department: this.department,
-                        }),
-                    })
-                    var newContact = (await res.json())
-                    console.log('new contact: ',newContact);
-                    this.contactsTable.push([newContact.id, newContact.enName, 
-                        newContact.arName, newContact.email, 
-                        newContact.grade, newContact.phone, newContact.department
-                    ]);
+                if (res.status == 200){
+                    var clientContacts = (await res.json())
+                    clientContacts.contacts.forEach(contact => {
+                        this.contactsTable.push([contact.id, contact.enName, 
+                        contact.arName, contact.email, 
+                        contact.grade, contact.phone, contact.department
+                        ]); 
+                    });
+                    this.$refs.table.newBtn.disabled = false; // enable new contact button
                 }
-                catch (error) {
-                    console.log(error);
+                else{
+                    console.log(res);
+                    this.$refs.alert.showAlert('danger', "Error while trying to get client contacts");
                 }
             }
-            // update contact
-            else if(this.populated == true){
-                return;
+            catch(error){
+                console.log(error);
+                this.$refs.alert.showAlert('danger', "Error while trying to get client contacts");
             }
-        },
-        // ############## delete a selected record from the table ##############
-        deleteContact(){
-            console.log('delete');
-        },
-        // reset the add/modify contact form
-        clearContact(){
-            this.populated = false;
-            this.drArabicName = '';
-            this.drEnglishName = '';
-            this.drEmail = '';
-            this.grade = '';
         },
         resetTab(){
             this.selectedClient = null;
             this.contactsTable = [];
-            this.populated = false;
+            this.$refs.table.newBtn.disabled = true; // disable new contact button if no client was selected
         },
-        updateContact(){
 
-        }
+        // ############## client contacts table ##############
+        addToTable(contact){
+            this.contactsTable.push([contact.id, contact.arName, 
+                contact.enName, contact.email, 
+                contact.grade, contact.phone, contact.department
+                ]); 
+        },
 
     }
 }

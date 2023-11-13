@@ -1,7 +1,7 @@
 <template>
     <div class="d-flex justify-content-start">
-        <button class="btn btn-table text-black" data-bs-toggle="modal" :data-bs-target="createModal" >NEW</button>
-        <button @click="editRecord" ref="editBtn" class="btn btn-table text-black" disabled data-bs-toggle="modal" :data-bs-target="editModal" >EDIT</button>
+        <button ref="newBtn" class="btn btn-table text-black" data-bs-toggle="modal" :data-bs-target="createModal" :disabled="isNewDisabled">NEW</button>
+        <button @click="editRecord" ref="editBtn" class="btn btn-table text-black" data-bs-toggle="modal" :data-bs-target="editModal" disabled>EDIT</button>
         <button @click="deleteRecord" ref="deleteBtn" class="btn btn-table text-black" disabled>DELETE</button>
     </div>
     <DataTable ref="table" :options="{ select: 'single', dom: 'frtip'}" :data="tableData" v-on:[`select`]="selectRow" v-on:[`deselect`]="deSelectRow" class="table table-hover display" width="100%">
@@ -29,26 +29,35 @@ DataTable.use(DataTablesCore);
 DataTable.use(Select);
 
 
+
 export default{
     emits: ["onEdit", "onDelete"],
+    expose: ["newBtn", "editBtn", "deleteBtn"],
     components:{
         DataTable
     },
     setup(){
-        const table = ref()
-        const editBtn = ref()
-        const deleteBtn = ref()
         var record = {};
         let dt = null;
+        const table = ref()
+        const newBtn = ref()
+        const editBtn = ref()
+        const deleteBtn = ref()
         return {
             table,
             dt,
+            newBtn,
             editBtn,
             deleteBtn, 
             record
         }
     },
     props:{
+        isNewDisabled:{
+            type: Boolean,
+            required: false,
+            default: () => false
+        },
         columns: {
             type: Array,
             required: true,
@@ -87,7 +96,8 @@ export default{
             console.log('delete record');
             this.$emit('onDelete', this.record);
         },
-        deSelectRow(e){
+        deSelectRow(){
+            console.log('deselect row');
             this.editBtn.disabled = true;
             this.deleteBtn.disabled = true;
         },
@@ -107,6 +117,7 @@ export default{
         }
     },
 }
+
 </script>
 
 <style>

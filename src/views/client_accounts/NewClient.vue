@@ -11,7 +11,7 @@
         </div> 
       </div>
       <div class="modal-body">
-        <form @submit.prevent="save" class="ms-3 me-3">
+        <form @submit.prevent="create" class="ms-3 me-3">
                 <div class="form-group row mb-4">
                     <div class="col-lg-3 label">
                         <label for="" class="col-form-label">{{ $t('client_code') }}</label>
@@ -104,8 +104,9 @@ export default{
         }
     },
     methods: {
-        async save() {
+        async create() {
             try{
+
                 this.loading = true;
                 const response = await axios.post(this.host+'/api/client', this.getFormData());
                 if(response.status == 201){

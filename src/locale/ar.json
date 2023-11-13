@@ -100,13 +100,15 @@
         "account1": "حساب ١",
         "account2": "حساب ٢",
         "account3": "حساب ٣",
-        "arabic_dr_name":"اسم الدكتور بالعربي",
-        "english_dr_name":"اسم الدكتور بالإنجليزي",
-        "dr_grade": "درجة الدكتور",
+        "arabic_name":"الاسم بالعربي",
+        "english_name":"الاسم بالإنجليزي",
+        "grade": "الدرجة",
         "email":"البريد الإلكتروني",
 
         "update_client_contact": "إضافة / تعديل جهة اتصال",
         "id": "الرقم",
         "accounts":"حسابات",
-        "contacts":"جهات اتصال"
+        "contacts":"جهات اتصال",
+
+        "new_contact": "إضافة جهة اتصال"
 }
