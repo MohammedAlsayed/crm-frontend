@@ -74,6 +74,7 @@
 <script lang="ts">
 import axios from 'axios';
 import AlertComponent from '@/components/AlertComponent.vue';
+import { toRaw } from 'vue';
 
 export default{
     emits: ["onContactAdded"],
@@ -81,14 +82,14 @@ export default{
         AlertComponent
     },
     props: {
-        clientId: {
-            type: Number,
+        client: {
+            type: Object,
             required: true
         },
     },
     data(){
         return{
-            // client contact form
+            // contact form
             arabicName: '',
             englishName: '',
             email: '',
@@ -96,21 +97,13 @@ export default{
             department: '',
             phone: '',
             loading: false,
-            client_name: null,
-            client_contacts: [],
-            client_contacts_table: [],
-            client_contacts_header: [
-                "id","arabic_name", 
-            "english_name",
-            "email","grade", "phone", "department"
-            ],
         }
     },
     methods:{
         async create(){
             try{
-                console.log('create contact:', this.getFormData())
                 this.loading = true;
+                console.log('create contact', this.getFormData())
                 const response = await axios.post(this.host+'/api/contact/', this.getFormData())
                 if(response.status == 201){
                     this.loading = false;
@@ -132,7 +125,7 @@ export default{
         },
         getFormData(){
             var formData = {};
-            formData['clientId'] = this.clientId
+            formData['clientId'] = toRaw(this.client).id
             if (this.arName != '') formData["arName"] = this.arabicName;
             if (this.enName != '') formData["enName"] = this.englishName;
             if (this.email != '') formData["email"] = this.email;

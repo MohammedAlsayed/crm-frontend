@@ -1,6 +1,6 @@
 <template>
-    <AlertComponent ref="alert" />
     <div class="tab-pane fade" id="add-contacts" role="tabpanel" aria-labelledby="new-client-tab">
+        <AlertComponent ref="alert" />
         <div class="row mt-4">
             <div class="col-lg-12">
                 <div class="card">
@@ -43,9 +43,9 @@
                         <span>{{ $t('client_contacts') }}</span>
                     </div>
                     <div class="card-body">
-                        <TableComponent ref="table" :columns="contactHeader" :isNewDisabled=true :tableData="contactsTable" :createModal="createView"/>
-                        <NewContact :clientId="clientId" @onContactAdded="addToTable"/>
-                        <!-- <TableComponent :columns="clientHeader" :tableData="tableData" :createModal="createView" :editModal="editView" @onEdit="getRecord" @onDelete="deleteRecord"/> -->
+                        <TableComponent ref="table" :columns="contactHeader" :isNewDisabled=true :tableData="contactsTable" :createModal="createView" :editModal="editView" @onEdit="getRecord" @onDelete="deleteRecord"/>
+                        <NewContact :client="clientObj" @onContactAdded="addToTable"/>
+                        <EditContact :contactInfo="toEditContact" @onContactEdited="updateTable"/>
                     </div>
                 </div>
             </div>
@@ -57,12 +57,15 @@
 import TableComponent from '@/components/TableComponent.vue'
 import AlertComponent from '@/components/AlertComponent.vue'
 import NewContact from './NewContact.vue'
+import EditContact from './EditContact.vue'
+import axios from 'axios';
 
 export default{
     components: {
     TableComponent,
     AlertComponent,
     NewContact,
+    EditContact
     },
     data(){
         return{
@@ -72,19 +75,19 @@ export default{
             shortResult: [],
 
             selectedClient: null,
-            // newBtnDisabled: true,
 
-            clientId: -1,
+            clientObj: {},
+            toEditContact: {},
                 
             // client contacts table
             contactHeader: [
                 "id","arabic_name", 
-                "english_name",
-                "email","grade", "phone", "department"
+                "english_name","grade","phone","email", "department"
             ],
             contactsTable: [],   
             
             createView: '#createContactModal',
+            editView: '#editContactModal',
         }
     },
     watch: {
@@ -94,15 +97,15 @@ export default{
                 this.listSelect[result[0]]
                 return;
             }
-            
+
             // // if he didn't select from the list reset all values
             // // if he selected from the list the difference between old and new val length will be greater than 1
             if(newVal.length == oldVal.length+1 || newVal.length == oldVal.length-1){
-                this.resetTab();
+                this.reset();
             }
         
             if(newVal == ''){
-                this.resetTab();
+                this.reset();
                 this.shortResult = [];
                 return;
             }
@@ -128,7 +131,7 @@ export default{
         listSelect(client){
             this.searchTerm = client.enName;
             this.selectedClient = client;
-            this.clientId = this.selectedClient.id;
+            this.clientObj = this.selectedClient;
             this.shortResult = [];
         },
         // ############## search contacts for the selected client  ##############
@@ -141,16 +144,14 @@ export default{
                 return;
             }
 
-            this.clientId = this.selectedClient.id
-            const url = this.host+'/api/client/'+this.clientId;
+            const url = this.host+'/api/client/'+this.selectedClient.id;
             try{
                 const res = await fetch(url)
                 if (res.status == 200){
                     var clientContacts = (await res.json())
                     clientContacts.contacts.forEach(contact => {
-                        this.contactsTable.push([contact.id, contact.enName, 
-                        contact.arName, contact.email, 
-                        contact.grade, contact.phone, contact.department
+                        this.contactsTable.push([contact.id, contact.arName, contact.enName, 
+                        contact.grade, contact.phone, contact.email, contact.department
                         ]); 
                     });
                     this.$refs.table.newBtn.disabled = false; // enable new contact button
@@ -165,20 +166,63 @@ export default{
                 this.$refs.alert.showAlert('danger', "Error while trying to get client contacts");
             }
         },
-        resetTab(){
+        reset(){
             this.selectedClient = null;
             this.contactsTable = [];
             this.$refs.table.newBtn.disabled = true; // disable new contact button if no client was selected
+            this.$refs.table.editBtn.disabled = true; // disable edit contact button if no client was selected
+            this.$refs.table.deleteBtn.disabled = true; // disable delete contact button if no client was selected
         },
 
         // ############## client contacts table ##############
         addToTable(contact){
-            this.contactsTable.push([contact.id, contact.arName, 
-                contact.enName, contact.email, 
-                contact.grade, contact.phone, contact.department
+            this.contactsTable.push([contact.id, contact.arName, contact.enName, 
+                contact.grade, contact.phone, contact.email, contact.department
                 ]); 
         },
 
+        // ############# Edit Contact ################
+        getRecord(contact){
+            this.toEditContact = {}
+            this.toEditContact.clientId = this.selectedClient.id;
+            this.toEditContact.rowIdx = contact.rowIdx;
+            this.toEditContact.id = contact.id;
+            this.toEditContact.arName = contact.arabic_name;
+            this.toEditContact.enName = contact.english_name;
+            this.toEditContact.grade = contact.grade;
+            this.toEditContact.phone = contact.phone;
+            this.toEditContact.email = contact.email;
+            this.toEditContact.department = contact.department;
+        },
+        updateTable(updatedContact){
+            var toUpdateRecord = this.contactsTable[this.toEditContact.rowIdx]
+            toUpdateRecord[1] = updatedContact.arName ? updatedContact.arName : toUpdateRecord[1];
+            toUpdateRecord[2] = updatedContact.enName ? updatedContact.enName : toUpdateRecord[2];
+            toUpdateRecord[3] = updatedContact.grade ? updatedContact.grade : toUpdateRecord[3];
+            toUpdateRecord[4] = updatedContact.phone ? updatedContact.phone : toUpdateRecord[4];
+            toUpdateRecord[5] = updatedContact.email ? updatedContact.email : toUpdateRecord[5];
+            toUpdateRecord[6] = updatedContact.department ? updatedContact.department : toUpdateRecord[6];   
+            this.toEditContact = {};
+        },
+        // ############# Delete Contact ################
+        async deleteRecord(contact){
+            try{
+                const result = await axios.delete(this.host+'/api/contact/'+contact.id)
+                if (result.status == 204){
+                    this.contactsTable.splice(contact.rowIdx, 1);
+                    this.$refs.alert.showAlert("success", "Deleted successfully");
+                    this.$refs.table.editBtn.disabled = true;
+                    this.$refs.table.deleteBtn.disabled = true;
+                }
+                else{
+                    console.log(result);
+                    this.$ref.alert.showAlert("danger", "Error couldn't delete the record");
+                }
+            }catch(error){
+                console.log(error);
+                this.$ref.alert.showAlert("danger", "Error couldn't delete the record");
+            }
+        }
     }
 }
 </script>

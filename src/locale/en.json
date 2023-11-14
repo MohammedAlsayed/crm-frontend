@@ -112,5 +112,6 @@
         "accounts":"Accounts",
         "contacts":"Contacts",
 
-        "new_contact": "New Contact"
+        "new_contact": "New Contact",
+        "edit_contact":"Edit Contact"
 }

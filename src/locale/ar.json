@@ -110,5 +110,6 @@
         "accounts":"حسابات",
         "contacts":"جهات اتصال",
 
-        "new_contact": "إضافة جهة اتصال"
+        "new_contact": "إضافة جهة اتصال",
+        "edit_contact":"تعديل جهة اتصال"
 }

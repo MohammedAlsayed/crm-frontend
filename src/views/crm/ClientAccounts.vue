@@ -18,7 +18,7 @@
                                 <div class="card-body table-body">
                                     <TableComponent ref="table" :columns="clientHeader" :tableData="tableData" :createModal="createView" :editModal="editView" @onEdit="getRecord" @onDelete="deleteRecord"/>
                                     <NewClient @onClientAdded="addToTable"/>
-                                    <EditClient :clientObj="toEditRecord" @onClientEdited="updateTable"/>
+                                    <EditClient :clientObj="toEditClient" @onClientEdited="updateTable"/>
                                 </div>
                             </div>
                         </div>
@@ -57,7 +57,7 @@ export default{
             tableData: null,
             createView: '#createClientModal',
             editView: '#editClientModal',
-            toEditRecord: {},
+            toEditClient: {},
         }
     },
     mounted(){
@@ -86,13 +86,13 @@ export default{
             this.tableData.push([client.id, client.arName, client.enName, client.website, client.phone, client.city]);
         },
         getRecord(client: any){
-            this.toEditRecord.rowIdx = client.rowIdx;
-            this.toEditRecord.id = client.id;
-            this.toEditRecord.arName = client.ar_client_name;
-            this.toEditRecord.enName = client.en_client_name;
-            this.toEditRecord.website = client.website;
-            this.toEditRecord.phone = client.phone;
-            this.toEditRecord.city = client.city;
+            this.toEditClient.rowIdx = client.rowIdx;
+            this.toEditClient.id = client.id;
+            this.toEditClient.arName = client.ar_client_name;
+            this.toEditClient.enName = client.en_client_name;
+            this.toEditClient.website = client.website;
+            this.toEditClient.phone = client.phone;
+            this.toEditClient.city = client.city;
         },
         async deleteRecord(client: any){
             try{

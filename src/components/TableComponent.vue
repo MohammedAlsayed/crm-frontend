@@ -89,32 +89,30 @@ export default{
     },
     methods:{
         editRecord(){
-            console.log('edit record');
+            this.getSelectedRow()
             this.$emit('onEdit', this.record);
         },
         deleteRecord(){
-            console.log('delete record');
+            this.getSelectedRow()
             this.$emit('onDelete', this.record);
         },
         deSelectRow(){
-            console.log('deselect row');
             this.editBtn.disabled = true;
             this.deleteBtn.disabled = true;
         },
-        // emits an event with the selected row data
-        selectRow(e){    
-            console.log();
+        selectRow(){    
             this.editBtn.disabled = false;
             this.deleteBtn.disabled = false;
-
-            const rowIdx = e.dt.value.rows({selected: true})[0][0];
-            this.record['rowIdx'] = rowIdx;
-
-            const selectedRecord = e.dt.value.rows({selected: true}).data().toArray()[0]; 
-            for (let i = 0; i < this.columns.length; i++) {
-                this.record[this.columns[i]] = selectedRecord[i];
+        },
+        getSelectedRow(){
+            if(this.dt != null){
+                const selectedRecord = this.dt.rows({selected: true}).data().toArray()[0];
+                for (let i = 0; i < this.columns.length; i++) {
+                    this.record[this.columns[i]] = selectedRecord[i];
+                }
+                this.record['rowIdx'] = this.dt.rows({selected: true})[0][0];
             }
-        }
+        },
     },
 }
 
