@@ -3,10 +3,17 @@
 </template>
 
 <script lang="ts">
+import { app_rtl } from './assets/js/rtl';
 export default {
   name: 'App',
+  beforeMount(){
+
+  },
   mounted(){
-    document.cookie = 'local=EN'
+    if (document.cookie.indexOf('local=') === -1){
+        document.cookie = 'local=EN';   
+    }
+    app_rtl();
   }
 }
 

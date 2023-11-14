@@ -51,12 +51,8 @@ export default{
     },
     methods:{
         login(){
-            axios.post('http://localhost:8080/api/login', {
-                username: this.username,
-                password: this.password,
-                remember_me: this.remember_me
-            })
-            .then(response => {
+            const url = this.host+'/api/login/'+this.username+'/'+this.password;
+            axios.get(url).then(response => {
                 if(response.status == 200){
                     localStorage.setItem('user-info', response.data);
                     // localStorage.setItem('token', response.data.token);
@@ -64,6 +60,7 @@ export default{
                     this.$router.push({name: 'Overview'});
                 }
                 else{
+                    console.log(response);
                     this.$refs.alert.showAlert('danger', t('alert_danger.fail_login'));
                 }
             })

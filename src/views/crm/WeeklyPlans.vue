@@ -23,7 +23,7 @@
                 </ul>
                 <div class="tab-content">
                     <NewWeeklyPlan/>
-                    <TableComponent idTarget="search-weekly-plan"  :columns="columnNames" :tableData="tableData" />
+                    <TableComponent :columns="columnNames" :tableData="tableData" />
                 </div>
             </div>
         </div>

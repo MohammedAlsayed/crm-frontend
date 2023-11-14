@@ -13,7 +13,7 @@
                                 <label class="col-form-label" for="client-name">{{ $t('en_client_name') }}</label>
                                 <div class="col-lg-4 me-5 dropdown">
                                     <div class="input-group">
-                                        <input type="text" class="form-control" v-model="searchTerm" placeholder="Search in names...">
+                                        <input type="text" class="form-control" v-model="searchTerm" :placeholder="$t('search_in_names_placeholder')">
                                     </div>
                                     <ul v-if="shortResult.length > 0 && selectedClient === null"  class="w-75 rounded border px-4 py-2 mt-1 position-absolute bg-white" style="z-index: 99;">
                                             <li class="dropdown-item cursor-pointer pt-1 pb-1 ps-2 fw-bold border-bottom">
@@ -26,7 +26,7 @@
                                 </div>   
                                 <div class="col-lg-4">
                                     <div class="d-grid gap-2 d-flex justify-content-end">
-                                        <button type="submit" class="btn btn-success me-md-2 float-right">Search</button>                        
+                                        <button type="submit" class="btn btn-success me-md-2 float-right">{{ $t('search') }}</button>                        
                                     </div>
                                 </div>                             
                             </div>

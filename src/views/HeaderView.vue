@@ -8,7 +8,7 @@
       <!-- offcanvas trigger-->
       <div class="d-flex flex-grow-1">
         <span class="ms-2"></span>
-        <a class="navbar-brand ps-3" href="/"><img src="../assets/logo1.svg" width="40" height="40" alt="logo"> Modern Quality Est.</a>
+        <a class="navbar-brand ps-3" href="/"><img src="../assets/images/logo1.svg" width="40" height="40" alt="logo"> {{$t('company_name')}}</a>
       </div>
       <div class="collapse navbar-collapse show" id="collapsibleNavId">
         <ul class="navbar-nav ms-auto">
@@ -20,6 +20,8 @@
               <li><a class="dropdown-item" href="#">New project...</a></li>
               <li><a class="dropdown-item" href="#">Settings</a></li>
               <li><a class="dropdown-item" href="#">Profile</a></li>
+              <li @click="changeLang" v-if="this.lang == 'EN'"><a class="dropdown-item" href="#">عربي</a></li>
+              <li @click="changeLang" v-if="this.lang == 'AR'"><a class="dropdown-item" href="#">English</a></li>
               <li><hr class="dropdown-divider"></li>
               <li><a class="dropdown-item" v-on:click="signout">Sign out</a></li>
             </div>
@@ -31,6 +33,9 @@
 </template>
 
 <script>
+import i18n from '../components/i18n'
+import {datatables_rtl} from '../assets/js/rtl' 
+
 export default{
     name: 'HeaderView',
     mounted(){
@@ -39,10 +44,29 @@ export default{
             this.$router.push({name: 'Login'});
         }
     },
+    data(){
+        return{
+            lang: document.cookie.split('=')[1]
+        }
+    },
     methods: {
       signout(){
         localStorage.removeItem('user-info');
         this.$router.push({name: 'Login'});
+      },
+      changeLang(){
+          if (this.lang == 'AR'){
+            i18n.global.locale = 'EN';
+            document.cookie = 'local=EN'
+            this.lang = 'EN';
+            datatables_rtl();
+          }
+          else if (this.lang == 'EN'){
+            i18n.global.locale = 'AR';
+            document.cookie = 'local=AR'
+            this.lang = 'AR';
+            datatables_rtl();
+          }
       }
     }
 }

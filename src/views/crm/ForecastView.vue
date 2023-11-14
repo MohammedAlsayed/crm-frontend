@@ -18,7 +18,7 @@
                 </ul>
                 <div class="tab-content">
                     <NewForecast/>
-                    <TableComponent idTarget="search-forecast" :columns="columnNames" :tableData="tableData" />
+                    <TableComponent :columns="columnNames" :tableData="tableData" />
                 </div>
             </div>
         </div>

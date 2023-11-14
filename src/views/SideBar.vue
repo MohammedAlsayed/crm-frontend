@@ -58,12 +58,24 @@
     </div>
   </aside>
 </template>
+<script lang="ts">
+import { sidebar_rtl } from '../assets/js/rtl'
+
+export default{
+  mounted(){
+    sidebar_rtl();
+  }
+}
+</script>
 
 <style>
 :root{
   --offcanvas-width: 230px;
   --topNavBarHeight: 64px;
   --sideBarBreakpoint: 992px;
+  --arToggleBtnTransform: rotate(0deg);
+  --leftMain: calc(var(--offcanvas-width) + 20px);
+  --rightMain: 0;
 }
 
 .sidebar-nav{
@@ -107,7 +119,8 @@ nav ul{
 }
 
 .btn-toggle::before {
-  width: 1.25em;
+  transform: var(--arToggleBtnTransform);
+  margin: 0 10px;
   line-height: 0;
   content: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='rgba%280,0,0,.5%29' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M5 14l6-6-6-6'/%3e%3c/svg%3e");
   transition: transform .35s ease;

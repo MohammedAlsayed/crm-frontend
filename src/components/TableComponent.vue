@@ -1,8 +1,8 @@
 <template>
     <div class="d-flex justify-content-start">
-        <button ref="newBtn" class="btn btn-table text-black" data-bs-toggle="modal" :data-bs-target="createModal" :disabled="isNewDisabled">NEW</button>
-        <button @click="editRecord" ref="editBtn" class="btn btn-table text-black" data-bs-toggle="modal" :data-bs-target="editModal" disabled>EDIT</button>
-        <button @click="deleteRecord" ref="deleteBtn" class="btn btn-table text-black" disabled>DELETE</button>
+        <button ref="newBtn" class="btn btn-table text-black" data-bs-toggle="modal" :data-bs-target="createModal" :disabled="isNewDisabled">{{ $t("NEW") }}</button>
+        <button @click="editRecord" ref="editBtn" class="btn btn-table text-black" data-bs-toggle="modal" :data-bs-target="editModal" disabled>{{ $t("EDIT") }}</button>
+        <button @click="deleteRecord" ref="deleteBtn" class="btn btn-table text-black" disabled>{{ $t("DELETE") }}</button>
     </div>
     <DataTable ref="table" :options="{ select: 'single', dom: 'frtip'}" :data="tableData" v-on:[`select`]="selectRow" v-on:[`deselect`]="deSelectRow" class="table table-hover display" width="100%">
             <thead class="table-success">
@@ -24,6 +24,7 @@ import Select from 'datatables.net-select';
 
 import 'datatables.net-responsive';
 import {ref} from 'vue';
+import {datatables_rtl} from '../assets/js/rtl';
 
 DataTable.use(DataTablesCore);
 DataTable.use(Select);
@@ -86,6 +87,7 @@ export default{
     },
     mounted(){
         this.dt = this.table.dt;
+        datatables_rtl()
     },
     methods:{
         editRecord(){

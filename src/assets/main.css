@@ -81,3 +81,8 @@ label > div{
     width: 140px !important;
   }  
 }
+
+
+.pull-left{
+  float: left !important;
+}

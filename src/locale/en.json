@@ -19,7 +19,7 @@
         "city":"City",
 
         "success_login": "Welcome Back!",
-        "new_client": "New Client Account Added Successfully",
+        "new_client_alert": "New Client Account Added Successfully",
     
         "fail_login": "User Name or Password is incorrect",
         "server_error": "Sorry, had an issue when connecting to the server",
@@ -113,5 +113,14 @@
         "contacts":"Contacts",
 
         "new_contact": "New Contact",
-        "edit_contact":"Edit Contact"
+        "edit_contact":"Edit Contact",
+        "NEW":"NEW",
+        "EDIT":"EDIT",
+        "DELETE":"DELETE",
+        "create":"Create",
+        "update":"Update",
+        "search":"Search",
+        "new_client":"New Client",
+        "company_name":"Modern Quality Est.",
+        "search_in_names_placeholder":"Search in Names..."
 }

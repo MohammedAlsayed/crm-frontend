@@ -10,6 +10,7 @@
 <script>
 import HeaderView from './HeaderView.vue';
 import SideBar from './SideBar.vue';
+import { header_rtl } from '../assets/js/rtl';
 
 export default{
     components:{
@@ -17,6 +18,7 @@ export default{
         SideBar,
 },
     mounted(){
+        header_rtl();
         let user = localStorage.getItem('user-info');
         if (!user){
             this.$router.push({name: 'Login'});
@@ -34,7 +36,8 @@ main{
 }
 @media (min-width: 992px){
     main{
-        left: calc(var(--offcanvas-width) + 20px) !important;
+        left: var(--leftMain) !important;
+        right: var(--rightMain) !important; /* for RTL*/
     }
 }
 </style>

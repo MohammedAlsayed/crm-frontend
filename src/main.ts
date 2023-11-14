@@ -11,7 +11,6 @@ import "bootstrap-icons/font/bootstrap-icons.css"
 import "bootstrap"
 import i18n from './components/i18n.ts'
 
-
 const app = createApp(App)
 
 app.config.globalProperties.host = 'https://localhost:7222'

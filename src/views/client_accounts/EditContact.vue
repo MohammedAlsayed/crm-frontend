@@ -6,7 +6,7 @@
           <div class="modal-header">
             <h5 class="modal-title">{{ $t('edit_contact') }}</h5>
             <div class="pull-right">
-                <img v-if="loading" src="../../assets/loading-bars.gif" width="60" height="40" alt="loading">
+                <img v-if="loading" src="../../assets/images/loading-bars.gif" width="60" height="40" alt="loading">
             <button ref="close" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div> 
           </div>
@@ -61,7 +61,7 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                    <button type="submit" class="btn btn-success text-white">Update</button>
+                    <button type="submit" class="btn btn-success text-white">{{ $t('update') }}</button>
                     </div>
                 </form>
           </div>

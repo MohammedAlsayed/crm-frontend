@@ -4,9 +4,9 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title">New Client</h5>
+        <h5 class="modal-title">{{ $t('new_client') }}</h5>
         <div class="pull-right">
-            <img v-if="loading" src="../../assets/loading-bars.gif" width="60" height="40" alt="loading">
+            <img v-if="loading" src="../../assets/images/loading-bars.gif" width="60" height="40" alt="loading">
         <button ref="close" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div> 
       </div>
@@ -61,7 +61,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                <button type="submit" class="btn btn-success text-white">Create</button>
+                <button type="submit" class="btn btn-success text-white">{{ $t('create') }}</button>
                 </div>
             </form>
       </div>
