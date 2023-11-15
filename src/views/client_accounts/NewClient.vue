@@ -41,7 +41,7 @@
                         <label for="" class="col-form-label">{{ $t('website') }}</label>
                     </div>
                     <div class="col-lg-8">
-                        <input v-model.trim="website" type="url" class="form-control">
+                        <input v-model.trim="website" type="url" class="form-control" placeholder="http://example.com">
                     </div>
                 </div>
                 <div class="form-group row mb-4">
@@ -108,7 +108,7 @@ export default{
             try{
 
                 this.loading = true;
-                const response = await axios.post(this.host+'/api/client', this.getFormData());
+                const response = await axios.post('client', this.getFormData());
                 if(response.status == 201){
                     this.$refs.alert.showAlert("success", "Client added successfully");
                     this.$emit('onClientAdded', response.data);
@@ -128,20 +128,20 @@ export default{
                 this.$refs.alert.showAlert("danger", "Error while trying to connect to the server");
             }
        },
-        getNextId(){
-            // ajax request to get the last client id from the server and set it to client_code
-            axios.get(this.host+'/api/client/nextid')
-            .then(response => {
+        async getNextId(){
+            try{
+                // ajax request to get the last client id from the server and set it to client_code
+                const response = await axios.get('client/nextid')
                 if(response.status == 200){
                     this.clientCode = response.data;
                 }
                 else{
                     console.log(response.data);
                 }
-            })
-            .catch(error => {
+            }
+            catch(error) {
                 console.log(error);
-            })
+            }
         },
         clearForm(){
             this.arabicName = '';

@@ -32,6 +32,7 @@ import AlertComponent from '../components/AlertComponent.vue'
 import i18n from '../components/i18n'
 
 const { t } = i18n.global
+
 export default{
     components:{
         AlertComponent
@@ -44,30 +45,30 @@ export default{
         }
     },
     mounted(){
-            let user = localStorage.getItem('user-info');
+            let user = localStorage.getItem('token');
             if (user){
                 this.$router.push({name: 'Home'});
             }
     },
     methods:{
-        login(){
-            const url = this.host+'/api/login/'+this.username+'/'+this.password;
-            axios.get(url).then(response => {
+        async login(){
+            try{
+                const response = await axios.post('login', {enName:this.username, password:this.password})
                 if(response.status == 200){
-                    localStorage.setItem('user-info', response.data);
-                    // localStorage.setItem('token', response.data.token);
-                    this.$refs.alert.showAlert('success', t('alert_success.success_login'));
-                    this.$router.push({name: 'Overview'});
+                    localStorage.setItem('token', response.data);   
+                    axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('token')                 
+                    this.$refs.alert.showAlert('success', t('success_login'));
+                    this.$router.push({name: 'Overview'});    
                 }
                 else{
                     console.log(response);
-                    this.$refs.alert.showAlert('danger', t('alert_danger.fail_login'));
+                    this.$refs.alert.showAlert('danger', t('fail_login'));
                 }
-            })
-            .catch(error => {
-                this.$refs.alert.showAlert('danger',t('alert_danger.server_error'));
+            }
+            catch(error){
+                this.$refs.alert.showAlert('danger',t('server_error'));
                 console.log(error);
-            })
+            }
         },
     }
 }

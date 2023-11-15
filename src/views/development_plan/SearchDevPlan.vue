@@ -159,8 +159,6 @@ export default{
     components:{
         DataTable
     },
-    mounted(){
-    }
 }
 </script>
 

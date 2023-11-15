@@ -6,19 +6,15 @@
                     <li class="nav-item" role="presentation">
                         <button class="nav-link active" 
                         data-bs-toggle="tab" 
-                        data-bs-target="#new-dev-plan" 
+                        data-bs-target="#dev-plans" 
                         type="button" 
                         role="tab"
                          aria-controls="new plan" 
-                         aria-selected="true">{{ $t('new_dev_plan') }}</button>
-                    </li>
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link" data-bs-toggle="tab" data-bs-target="#search-dev-plan" type="button" role="tab" aria-controls="search plan" aria-selected="false">{{ $t('search_dev_plan') }}</button>
+                         aria-selected="true">{{ $t('development_plans') }}</button>
                     </li>
                 </ul>
                 <div class="tab-content">
-                    <NewDevPlan/>
-                    <div class="tab-pane fade" id="search-dev-plan" role="tabpanel" aria-labelledby="search-forecast-tab">
+                    <div class="tab-pane fade show active" id="dev-plans" role="tabpanel">
                         <div class="row mt-4">
                             <div class="card">
                                 <div class="card-body table-body">
@@ -35,12 +31,11 @@
 </template>
 
 <script lang="ts">
-import NewDevPlan from '../development_plan/NewDevPlan.vue';
 import TableComponent from '@/components/TableComponent.vue';
 
 export default{
     components: { 
-        NewDevPlan, TableComponent 
+     TableComponent 
     },
     data(){
         return {

@@ -19,7 +19,7 @@ export default{
 },
     mounted(){
         header_rtl();
-        let user = localStorage.getItem('user-info');
+        let user = localStorage.getItem('token');
         if (!user){
             this.$router.push({name: 'Login'});
         }

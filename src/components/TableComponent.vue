@@ -3,8 +3,8 @@
         <button ref="newBtn" class="btn btn-table text-black" data-bs-toggle="modal" :data-bs-target="createModal" :disabled="isNewDisabled">{{ $t("NEW") }}</button>
         <button @click="editRecord" ref="editBtn" class="btn btn-table text-black" data-bs-toggle="modal" :data-bs-target="editModal" disabled>{{ $t("EDIT") }}</button>
         <button @click="deleteRecord" ref="deleteBtn" class="btn btn-table text-black" disabled>{{ $t("DELETE") }}</button>
-    </div>
-    <DataTable ref="table" :options="{ select: 'single', dom: 'frtip'}" :data="tableData" v-on:[`select`]="selectRow" v-on:[`deselect`]="deSelectRow" class="table table-hover display" width="100%">
+    </div>      
+    <DataTable ref="table" :options='{ select: "single", dom:domOption}' :data="tableData" v-on:[`select`]="selectRow" v-on:[`deselect`]="deSelectRow" class="table table-hover display" width="100%">
             <thead class="table-success">
                 <tr>
                     <th v-for="col in columns" scope="col" :key="col">
@@ -24,7 +24,7 @@ import Select from 'datatables.net-select';
 
 import 'datatables.net-responsive';
 import {ref} from 'vue';
-import {datatables_rtl} from '../assets/js/rtl';
+import {isAr} from '../assets/js/rtl';
 
 DataTable.use(DataTablesCore);
 DataTable.use(Select);
@@ -44,13 +44,19 @@ export default{
         const newBtn = ref()
         const editBtn = ref()
         const deleteBtn = ref()
+        let domOption = "frtip";
+
+        if (isAr()) {
+            domOption = "<'pull-left'f>rtip";
+        }
         return {
             table,
             dt,
             newBtn,
             editBtn,
             deleteBtn, 
-            record
+            record,
+            domOption
         }
     },
     props:{
@@ -87,7 +93,6 @@ export default{
     },
     mounted(){
         this.dt = this.table.dt;
-        datatables_rtl()
     },
     methods:{
         editRecord(){

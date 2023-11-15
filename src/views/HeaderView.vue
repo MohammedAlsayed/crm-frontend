@@ -34,12 +34,12 @@
 
 <script>
 import i18n from '../components/i18n'
-import {datatables_rtl} from '../assets/js/rtl' 
+import {header_rtl} from '../assets/js/rtl' 
 
 export default{
     name: 'HeaderView',
     mounted(){
-        let user = localStorage.getItem('user-info');
+        let user = localStorage.getItem('token');
         if (!user){
             this.$router.push({name: 'Login'});
         }
@@ -51,7 +51,7 @@ export default{
     },
     methods: {
       signout(){
-        localStorage.removeItem('user-info');
+        localStorage.removeItem('token');
         this.$router.push({name: 'Login'});
       },
       changeLang(){
@@ -59,13 +59,13 @@ export default{
             i18n.global.locale = 'EN';
             document.cookie = 'local=EN'
             this.lang = 'EN';
-            datatables_rtl();
+            header_rtl();
           }
           else if (this.lang == 'EN'){
             i18n.global.locale = 'AR';
             document.cookie = 'local=AR'
             this.lang = 'AR';
-            datatables_rtl();
+            header_rtl();
           }
       }
     }

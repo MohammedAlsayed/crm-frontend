@@ -54,16 +54,6 @@ function header_rtl(){
     }    
 }
 
-function datatables_rtl(){
-    header_rtl();
-    if(isAr()){
-        document.querySelector(".dataTables_filter").setAttribute("class", "dataTables_filter pull-left");
-    }
-    else{
-        document.querySelector(".dataTables_filter").setAttribute("class", "dataTables_filter");
-    }
-}
-
 
 function isAr(){
     var lang = document.cookie.split('=')[1];
@@ -74,4 +64,4 @@ function isAr(){
     }
 }
 
-export {app_rtl, main_rtl, sidebar_rtl, header_rtl, datatables_rtl};
+export {app_rtl, main_rtl, sidebar_rtl, header_rtl, isAr};

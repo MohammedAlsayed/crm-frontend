@@ -103,8 +103,7 @@ export default{
         async create(){
             try{
                 this.loading = true;
-                console.log('create contact', this.getFormData())
-                const response = await axios.post(this.host+'/api/contact/', this.getFormData())
+                const response = await axios.post('contact', this.getFormData())
                 if(response.status == 201){
                     this.loading = false;
                     this.$refs.alert.showAlert('success', 'Contact added successfully');

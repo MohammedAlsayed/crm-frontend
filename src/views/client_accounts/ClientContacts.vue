@@ -42,7 +42,7 @@
                     <div class="card-header text-center">
                         <span>{{ $t('client_contacts') }}</span>
                     </div>
-                    <div class="card-body">
+                    <div class="card-body table-body">
                         <TableComponent ref="table" :columns="contactHeader" :isNewDisabled=true :tableData="contactsTable" :createModal="createView" :editModal="editView" @onEdit="getRecord" @onDelete="deleteRecord"/>
                         <NewContact :client="clientObj" @onContactAdded="addToTable"/>
                         <EditContact :contactInfo="toEditContact" @onContactEdited="updateTable"/>
@@ -119,10 +119,12 @@ export default{
         async getNames(term){
             try {
                 const parsedTerm = encodeURIComponent(term)
-                const url = new URL(this.host+'/api/client/searchNames/'+parsedTerm);
-                const res = await fetch(url.href)
-                this.allSearchResult = (await res.json())
-                this.shortResult = this.allSearchResult.slice(0,10)
+                const url = 'client/searchNames/'+parsedTerm
+                const response = await axios.get(url)
+                if (response.status == 200){
+                    this.allSearchResult = response.data;
+                    this.shortResult = this.allSearchResult.slice(0,10)
+                }
             } catch (error) {
                 console.log(error);
             }
@@ -143,12 +145,10 @@ export default{
             if(this.contactsTable.length > 0){
                 return;
             }
-
-            const url = this.host+'/api/client/'+this.selectedClient.id;
             try{
-                const res = await fetch(url)
-                if (res.status == 200){
-                    var clientContacts = (await res.json())
+                const response = await axios.get('client/'+this.selectedClient.id)
+                if (response.status == 200){
+                    var clientContacts = response.data
                     clientContacts.contacts.forEach(contact => {
                         this.contactsTable.push([contact.id, contact.arName, contact.enName, 
                         contact.grade, contact.phone, contact.email, contact.department
@@ -157,7 +157,7 @@ export default{
                     this.$refs.table.newBtn.disabled = false; // enable new contact button
                 }
                 else{
-                    console.log(res);
+                    console.log(response);
                     this.$refs.alert.showAlert('danger', "Error while trying to get client contacts");
                 }
             }
@@ -207,7 +207,7 @@ export default{
         // ############# Delete Contact ################
         async deleteRecord(contact){
             try{
-                const result = await axios.delete(this.host+'/api/contact/'+contact.id)
+                const result = await axios.delete('contact/'+contact.id)
                 if (result.status == 204){
                     this.contactsTable.splice(contact.rowIdx, 1);
                     this.$refs.alert.showAlert("success", "Deleted successfully");

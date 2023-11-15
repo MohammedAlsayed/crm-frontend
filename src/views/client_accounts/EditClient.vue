@@ -126,7 +126,7 @@ export default{
             try{
                 this.loading = true;
                 const updatedRecord = this.getFormData();
-                const response = await axios.put(this.host+'/api/client/'+this.clientCode, updatedRecord);
+                const response = await axios.put('client/'+this.clientCode, updatedRecord);
                 if(response.status == 204){
                     this.$refs.alert.showAlert("success", "Updated successfully");
                     this.$emit('onClientEdited', updatedRecord);

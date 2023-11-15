@@ -28,7 +28,6 @@
             </div>
         </div>
     </div>
-<!-- Modal -->
 
 </template>
 
@@ -64,23 +63,23 @@ export default{
         this.getAllClients();
     },
     methods:{
-        getAllClients(){
-            axios.get(this.host+'/api/client')
-            .then(response => {
+        async getAllClients(){
+            try{
+                const response = await axios.get('client')
                 if(response.status == 200){
-                    this.tableData = response.data;
-                    var result = [];
-                    response.data.forEach((item: { id: number, arName: string, enName: string, website: string, phone: string, city: string }) => {
-                        result.push([item.id, item.arName, item.enName, item.website, item.phone, item.city]);
-                    });
-                    this.tableData = result;
-                }else{
-                    console.log(response);
-                }
-            })
-            .catch(error => {
+                        this.tableData = response.data;
+                        var result = [];
+                        response.data.forEach((item: { id: number, arName: string, enName: string, website: string, phone: string, city: string }) => {
+                            result.push([item.id, item.arName, item.enName, item.website, item.phone, item.city]);
+                        });
+                        this.tableData = result;
+                    }else{
+                        console.log(response);
+                    }
+            }
+            catch(error) {
                 console.log(error);
-            })
+            }
         },
         addToTable(client: any){
             this.tableData.push([client.id, client.arName, client.enName, client.website, client.phone, client.city]);
@@ -96,7 +95,7 @@ export default{
         },
         async deleteRecord(client: any){
             try{
-                const result = await axios.delete(this.host+'/api/client/'+client.id)
+                const result = await axios.delete('client/'+client.id)
                 if (result.status == 204){
                     this.tableData.splice(client.rowIdx, 1);
                     this.$refs.alert.showAlert("success", "Deleted successfully");

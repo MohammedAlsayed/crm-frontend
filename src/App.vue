@@ -7,7 +7,7 @@ import { app_rtl } from './assets/js/rtl';
 export default {
   name: 'App',
   beforeMount(){
-
+    console.log('before mount app');
   },
   mounted(){
     if (document.cookie.indexOf('local=') === -1){

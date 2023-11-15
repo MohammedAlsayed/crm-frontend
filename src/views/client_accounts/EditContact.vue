@@ -116,7 +116,7 @@ export default{
             try{
                 this.loading = true;
                 const updatedContact = this.getFormData();
-                const response = await axios.put(this.host+'/api/contact/'+updatedContact.id, updatedContact)
+                const response = await axios.put('contact/'+updatedContact.id, updatedContact)
                 if(response.status == 204){
                     this.loading = false;
                     this.$refs.alert.showAlert('success', 'Contact updated successfully');

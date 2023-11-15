@@ -2,6 +2,7 @@ import './assets/main.css'
 
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
+import './interceptor/axios.js'
 
 import App from './App.vue'
 import router from './router'
@@ -13,7 +14,7 @@ import i18n from './components/i18n.ts'
 
 const app = createApp(App)
 
-app.config.globalProperties.host = 'https://localhost:7222'
+// app.config.globalProperties.host = 'http://localhost:5223'
 
 app.use(createPinia())
 app.use(router)

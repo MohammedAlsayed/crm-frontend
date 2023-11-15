@@ -127,6 +127,6 @@ export default{
         save(){
             this.$refs.alert.showAlert('success', 'Created New Development Plan Successfully');
         }
-    }
+    },
 }
 </script>
