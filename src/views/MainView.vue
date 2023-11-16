@@ -11,17 +11,37 @@
 import HeaderView from './HeaderView.vue';
 import SideBar from './SideBar.vue';
 import { header_rtl } from '../assets/js/rtl';
+import axios from 'axios';
 
 export default{
     components:{
         HeaderView,
         SideBar,
 },
+    beforeMount(){
+        console.log("main vue before mounted")
+        this.authenticate();
+    },
     mounted(){
+        console.log("main vue mounted")
         header_rtl();
-        let user = localStorage.getItem('token');
-        if (!user){
-            this.$router.push({name: 'Login'});
+    },
+    methods:{
+        async authenticate(){
+            let token = localStorage.getItem('token');
+            try{
+                const response = await axios.post('login/authenticate/'+token);
+                if (response.status != 200){
+                    console.log("not authenticated")
+                    localStorage.removeItem('token');
+                    this.$router.push({name: 'Login'});
+                }else{
+                    console.log("authenticated")
+                }
+            }catch(error){
+                localStorage.removeItem('token');
+                this.$router.push({name: 'Login'});
+            }
         }
     }
 

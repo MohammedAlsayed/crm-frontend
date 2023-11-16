@@ -34,7 +34,8 @@ export default{
 .alert-front {
     position: fixed !important;
     top: 10px;
-    width: 200px;
+    width: 50% !important;
+    left: 25%;
     z-index:99999; 
 }
 </style>

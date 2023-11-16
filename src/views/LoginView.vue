@@ -66,7 +66,9 @@ export default{
                 }
             }
             catch(error){
-                this.$refs.alert.showAlert('danger',t('server_error'));
+                if(error.response.status == 401){
+                    this.$refs.alert.showAlert('danger',t('fail_login'));
+                }
                 console.log(error);
             }
         },
