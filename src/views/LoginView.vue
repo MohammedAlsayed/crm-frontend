@@ -1,28 +1,31 @@
 <template>
 <div class="container">
     <AlertComponent ref='alert'/>
-    <div class="row">
-        <div class="col-md-6 login">
-            <h1>{{ $t('login_title') }}</h1>
-            <div class="form-floating">
-                <div class="text-start p-1">
-                    <label for="username">{{ $t('userName') }}</label>
-                    <input id="username-input" class="form-control form-control text-bg" v-model="username" size="32" type="text">
+    <form @submit.prevent="login">
+        <div class="row">
+            <div class="col-md-6 login">
+                <h1>{{ $t('login_title') }}</h1>
+                <div class="form-floating">
+                    <div class="text-start p-1">
+                        <label class="mb-2" for="username">{{ $t('userName') }}</label>
+                        <input id="username-input" class="form-control form-control text-bg" v-model="username" size="32" type="text">
+                    </div>
                 </div>
-            </div>
-            <div class="form-floating">
-                <div class="text-start p-1">
-                    <label for="password">{{ $t('password') }}</label>
-                    <input class="form-control form-control text-bg" v-model="password" size="32" type="password">
+                <div class="form-floating">
+                    <div class="text-start p-1">
+                        <label class="mb-2" for="password">{{ $t('password') }}</label>
+                        <input class="form-control form-control text-bg" v-model="password" size="32" type="password">
+                    </div>
                 </div>
+                <div class="form-group mb-3 mt-3">
+                    <input class="checkbox d-inline-flex me-3" id="remember_me" v-model="remember_me" type="checkbox"> 
+                    <label class="d-inline-flex" for="remember_me">{{ $t('rememberMe') }}</label>
+                    <a id="forget-password" href="#">{{ $t('forgotPassword') }}</a>
+                </div>
+                <button type="submit" class="form-control btn login-btn text-white">{{ $t('login') }}</button>
             </div>
-            <div class="form-group mb-3">
-                <input class="checkbox" id="remember_me" v-model="remember_me" type="checkbox"> <label for="remember_me">{{ $t('rememberMe') }}</label>
-                <a id="forget-password" href="#">{{ $t('forgotPassword') }}</a>
-            </div>
-            <button v-on:click="login" class="form-control btn login-btn text-white">{{ $t('login') }}</button>
         </div>
-    </div>
+    </form>
 </div>
 </template>
 
@@ -52,11 +55,16 @@ export default{
     },
     methods:{
         async login(){
+            console.log('login');
             try{
-                const response = await axios.post('login', {enName:this.username, password:this.password})
+                const response = await axios.post('auth/login', {email:this.username, password:this.password})
                 if(response.status == 200){
-                    localStorage.setItem('token', response.data);   
-                    axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('token')                 
+                    localStorage.setItem('token', response.data.token);   
+                    localStorage.setItem('refreshToken', response.data.refreshToken);
+                    localStorage.setItem('expiresAt', response.data.expiresAt);
+                    localStorage.setItem('userId', response.data.userId);
+                    
+                    axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('token')
                     this.$refs.alert.showAlert('success', t('success_login'));
                     this.$router.push({name: 'Overview'});    
                 }
@@ -66,10 +74,13 @@ export default{
                 }
             }
             catch(error){
-                if(error.response.status == 401){
+                if(error.response != null && error.response.status == 401){
                     this.$refs.alert.showAlert('danger',t('fail_login'));
                 }
-                console.log(error);
+                else{
+                    this.$refs.alert.showAlert('danger',t('server_error'));
+                    console.log(error);
+                }
             }
         },
     }
@@ -106,9 +117,7 @@ export default{
 }
 /* add space between label and input */
 .login label {
-    margin-bottom: 10px;
-    margin-top: 10px;
-    padding: 0px 5px;
+    white-space: nowrap;
 }
 .login-btn{
     background: hsla(160, 100%, 37%, 1) !important;

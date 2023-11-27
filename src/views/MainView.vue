@@ -28,20 +28,20 @@ export default{
     },
     methods:{
         async authenticate(){
-            let token = localStorage.getItem('token');
-            try{
-                const response = await axios.post('login/authenticate/'+token);
-                if (response.status != 200){
-                    console.log("not authenticated")
-                    localStorage.removeItem('token');
-                    this.$router.push({name: 'Login'});
-                }else{
-                    console.log("authenticated")
-                }
-            }catch(error){
-                localStorage.removeItem('token');
-                this.$router.push({name: 'Login'});
-            }
+            // let token = localStorage.getItem('token');
+            // try{
+            //     const response = await axios.post('login/authenticate/'+token);
+            //     if (response.status != 200){
+            //         console.log("not authenticated")
+            //         localStorage.removeItem('token');
+            //         this.$router.push({name: 'Login'});
+            //     }else{
+            //         console.log("authenticated")
+            //     }
+            // }catch(error){
+            //     localStorage.removeItem('token');
+            //     this.$router.push({name: 'Login'});
+            // }
         }
     }
 

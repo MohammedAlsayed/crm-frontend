@@ -1,5 +1,5 @@
 <template>
-    <div v-if="show" class="alert alert-dismissible fade show alert-front container" :class="'alert-'+alertType" role="alert">
+    <div v-if="show" class="alert alert-dismissible fade show container alert-front" :class="'alert-'+alertType" role="alert">
         {{ message  }}
         <!-- <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button> -->
     </div>
@@ -34,8 +34,8 @@ export default{
 .alert-front {
     position: fixed !important;
     top: 10px;
-    width: 50% !important;
+    width: 100% !important;
     left: 25%;
-    z-index:99999; 
+    z-index:99999;
 }
 </style>

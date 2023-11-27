@@ -20,6 +20,9 @@ import ProductView from '../views/crm/ProductView.vue'
 import TargetView from '../views/crm/TargetView.vue'
 import UserPermission from '../views/crm/UserPermission.vue'
 
+import {isAuthenticated} from "../interceptor/auth";
+import { c } from 'vitest/dist/reporters-5f784f42'
+
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -117,7 +120,7 @@ const router = createRouter({
           name: 'UserPermission',
           component: UserPermission
         },
-      ]
+      ],
     },
     {
       path: '/login',
@@ -127,4 +130,10 @@ const router = createRouter({
   ]
 })
 
+router.beforeEach(async (to, from) => {
+  if (to.name !== 'Login') {
+    const isAuth = await isAuthenticated()
+    if (!isAuth) return { name: 'Login' }
+  }
+})
 export default router

@@ -1,4 +1,5 @@
 <template>
+  <AlertComponent ref="alert"></AlertComponent>
   <nav class="navbar navbar-expand-lg fixed-top navbar-light bg-light p-2" style="z-index: 99;">
       <div class="container-fluid">
         <!-- offcanvas trigger-->
@@ -23,7 +24,7 @@
               <li @click="changeLang" v-if="this.lang == 'EN'"><a class="dropdown-item" href="#">عربي</a></li>
               <li @click="changeLang" v-if="this.lang == 'AR'"><a class="dropdown-item" href="#">English</a></li>
               <li><hr class="dropdown-divider"></li>
-              <li><a class="dropdown-item" v-on:click="signout">Sign out</a></li>
+              <li><a class="dropdown-item" v-on:click="logout">Sign out</a></li>
             </div>
           </li>
         </ul>
@@ -35,9 +36,14 @@
 <script>
 import i18n from '../components/i18n'
 import {header_rtl} from '../assets/js/rtl' 
+import axios from 'axios';
+import AlertComponent from '../components/AlertComponent.vue';
 
 export default{
     name: 'HeaderView',
+    components:{
+        AlertComponent
+    },
     mounted(){
         let user = localStorage.getItem('token');
         if (!user){
@@ -50,9 +56,21 @@ export default{
         }
     },
     methods: {
-      signout(){
-        localStorage.removeItem('token');
-        this.$router.push({name: 'Login'});
+      async logout(){
+        try{
+          let response = await axios.post('auth/logout', {token: localStorage.getItem('token'), refreshToken: localStorage.getItem('refreshToken'), userId: localStorage.getItem('userId')});
+          if (response.status == 200){
+            localStorage.removeItem('token');
+            localStorage.removeItem('refreshToken');
+            localStorage.removeItem('userId');
+            this.$router.push({name: 'Login'});
+          }else{
+            this.$refs.alert.showAlert('danger', 'Error while trying to logout');
+          }
+        }catch(error){
+          this.$refs.alert.showAlert('danger', 'Error while trying to logout');
+        }
+        
       },
       changeLang(){
           if (this.lang == 'AR'){

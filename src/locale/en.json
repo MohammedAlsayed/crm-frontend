@@ -22,7 +22,7 @@
         "new_client_alert": "New Client Account Added Successfully",
     
         "fail_login": "User Name or Password is incorrect",
-        "server_error": "Sorry, had an issue when connecting to the server",
+        "server_error": "Sorry, had an issue connecting to the server",
     
         "login_title": "User Login",
         "userName": "User Name",

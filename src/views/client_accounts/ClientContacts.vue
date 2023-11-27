@@ -1,6 +1,6 @@
 <template>
+    <AlertComponent ref="alert" />
     <div class="tab-pane fade" id="add-contacts" role="tabpanel" aria-labelledby="new-client-tab">
-        <AlertComponent ref="alert" />
         <div class="row mt-4">
             <div class="col-lg-12">
                 <div class="card">
